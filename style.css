@@ -6,12 +6,12 @@
 }
 
 @font-face {
-    font-family: "jacques-francois";
+    font-family: "Jacques Francois";
     src: url(polices/jacques-francois/JacquesFrancois-Regular.ttf);
 }
 
 @font-face {
-    font-family: "jacques-francois-shadow";
+    font-family: "Jacques Francois Shadow";
     src: url(polices/jacques-francois-shadow/JacquesFrancoisShadow-Regular.ttf);
 }
 
@@ -51,7 +51,7 @@ nav ul li a {
 }
 
 h1{
-    font-family: "jacques-francois-shadow";
+    font-family: "Jacques Francois Shadow";
     /* font-size: 90px; */
 }
 
