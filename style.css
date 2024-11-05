@@ -19,7 +19,8 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #001580;
-    color: white;
+    color: #FEFFC2;
+    text-align: left;
 }
 
 header {
