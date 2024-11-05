@@ -130,7 +130,7 @@ footer {
 }
 
 .footer-section {
-    flex: 1;
+    flex-grow: 1;
     padding: 20px;
     margin-bottom: 20px;
 }
@@ -171,6 +171,8 @@ footer {
     max-width: 1200px;
     margin: auto;
     flex-direction: row;
+    align-items: flex-end;
+    align-content: flex-end;
   }
   
   /* Style des colonnes */
