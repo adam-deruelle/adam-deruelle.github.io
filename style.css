@@ -30,6 +30,10 @@ nav ul li a {
     font-weight: bold;
 }
 
+citation{
+    font-family: "italianno";
+}
+
 .cv-button {
     border: 1px solid white;
     padding: 5px 10px;
@@ -114,4 +118,9 @@ footer {
 
 .footer-section ul li a:hover {
     text-decoration: underline;
+}
+
+@font-face {
+    font-family: "italianno";
+    src: url(polices/italianno/Italianno-Regular.ttf);
 }
