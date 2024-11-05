@@ -46,11 +46,14 @@ nav ul li a {
 }
 
 .citation{
-    font-family: "italianno";
+    font-family: "Jacques Francois Shadow";
     font-size: 50px;
 }
 
-
+h1{
+    font-family: "Jacques Francois Shadow";
+    /* font-size: 90px; */
+}
 
 h2{
     font-family: "jacques-francois-shadow";
@@ -158,7 +161,3 @@ footer {
     text-decoration: underline;
 }
 
-h1{
-    font-family: "Jacques Francois Shadow";
-    /* font-size: 90px; */
-}
