@@ -1,5 +1,10 @@
 /* styles.css */
 
+@font-face {
+    font-family: "italianno";
+    src: url(polices/italianno/Italianno-Regular.ttf);
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -120,7 +125,3 @@ footer {
     text-decoration: underline;
 }
 
-@font-face {
-    font-family: "italianno";
-    src: url(polices/italianno/Italianno-Regular.ttf);
-}
