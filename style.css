@@ -5,6 +5,16 @@
     src: url(polices/italianno/Italianno-Regular.ttf);
 }
 
+@font-face {
+    font-family: "jacques-francois";
+    src: url(polices/jacques-francois/JacquesFrancois-Regular.ttf);
+}
+
+@font-face {
+    font-family: "jacques-francois-shadow";
+    src: url(polices/jacques-francois-shadow/JacquesFrancoisShadow-Regular.ttf);
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -37,6 +47,32 @@ nav ul li a {
 
 .citation{
     font-family: "italianno";
+    font-size: 50px;
+}
+
+h1{
+    font-family: "jacques-francois-shadow";
+    font-size: 90px;
+}
+
+h2{
+    font-family: "jacques-francois-shadow";
+    font-size: 40px;
+}
+
+p{
+    font-family: "jacques-francois";
+    font-size: 20px;
+}
+
+.sous-titre-classique{
+    font-family: "jacques-francois";
+    font-size: 60px;
+}
+
+.text-ombre{
+    font-family: "jacques-francois-shadow";
+    font-size: 20px;
 }
 
 .cv-button {
