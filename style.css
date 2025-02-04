@@ -1,5 +1,5 @@
 :root{
-    --main-bg-color: #221684;
+    --main-bg-colorr: #221684;
     --main-text-color: #FFF1D3;
 }
 
@@ -47,7 +47,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: var(--main-bg-color);
+    color: var(--main-text-color);
     font-weight: bold;
 }
 
