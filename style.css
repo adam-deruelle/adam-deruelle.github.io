@@ -18,15 +18,15 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #001580;
-    color: #FEFFC2;
+    background-color: #12164B;
+    color: #F5F5E5;
 }
 
 /* Style du header */
 header {
     text-align: center;
     padding: 20px;
-    background-color: #001580;
+    background-color: #12164B;
 }
 
 /* Style de la navigation */
@@ -42,7 +42,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #FEFFC2;
+    color: #F5F5E5;
     font-weight: bold;
 }
 
@@ -134,8 +134,8 @@ p {
 
 /* Style global du footer */
 footer {
-    background-color: #001580;
-    color: #FEFFC2;
+    background-color: #12164B;
+    color: #F5F5E5;
     padding: 40px 0;
 }
 
@@ -155,7 +155,7 @@ footer div {
 footer ul, a{
     text-decoration: none;
     list-style-type: none;
-    color: #FEFFC2;
+    color: #F5F5E5;
     font-family: "Jacques Francois";
     font-size: 20px;
     padding: 0;
