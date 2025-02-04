@@ -1,5 +1,7 @@
---main-bg-color: #221684;
---main-text-color: #FFF1D3;
+:root{
+    --main-bg-color: #221684;
+    --main-text-color: #FFF1D3;
+}
 
 /* Définition des polices personnalisées */
 @font-face {
