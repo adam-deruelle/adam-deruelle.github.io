@@ -1,6 +1,6 @@
 :root{
-    --main-bg-color: #221684;
-    --main-text-color: #FFF1D3;
+    --main-bg-color: #0F7188;
+    --main-text-color: #FFFFFF;
 }
 
 /* Définition des polices personnalisées */
@@ -21,7 +21,7 @@
 
 /* Style global du body */
 body {
-    margin: 0;
+    margin: 40px;
     font-family: Arial, sans-serif;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
@@ -30,7 +30,6 @@ body {
 /* Style du header */
 header {
     text-align: center;
-    padding: 20px;
     background-color: var(--main-bg-color);
 }
 
@@ -44,7 +43,6 @@ header {
 /* Style de la navigation */
 nav ul {
     list-style-type: none;
-    padding: 0;
 }
 
 nav ul li {
@@ -65,11 +63,11 @@ nav ul li a {
 }
 
 h1 {
-    font-family: "Jacques Francois Shadow";
+    font-family: "Figtree";
 }
 
 h2 {
-    font-family: "Jacques Francois Shadow";
+    font-family: "Jacques Francois";
 }
 
 p {
@@ -124,10 +122,20 @@ p {
     font-style: italic;
     margin: 10px 0;
 }
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
 
 /* Section 'about' */
 .about {
-    padding: 40px 20px;
+    display: flex;
+    gap: 90px;
+    align-items: center;
+    flex-wrap:wrap;
 }
 
 .about h2 {
@@ -136,32 +144,37 @@ p {
     text-align: center;
 }
 
-.about-content {
+.about-content{
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    margin: 0 auto;
+    align-items: center;
     gap: 50px;
-    max-width: 800px;
+    width: fit-content;
+    max-width: 500px;
 }
 
 .annonce {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    background-color: var(--main-text-color);
+    color: black;
+    padding: 10px;
+    border-radius: 15px;
+    width: fit-content;
+    max-width: 500px;
 }
 
-
-
 .about-content p {
-    width: 45%;
+    width: 100%;
     font-size: 1.2em;
     line-height: 1.5;
 }
 
 /* Style global du footer */
 footer {
+    display: flex;
+    flex-direction: column;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
     padding: 40px 0;
@@ -171,14 +184,13 @@ footer section {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
     gap: 50px;
+    display: flex;
+    justify-content: center;
 }
 
-footer div {
-    max-width: 340px;
-}
+
+
 
 footer ul, a{
     text-decoration: none;
@@ -205,4 +217,21 @@ footer p{
 
 .liste-comp ul{
     list-style-type: none;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    top: 20px;
+    right: 20px;
+    object-fit: cover;
+}
+
+.profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: left;
+    gap: 100px;
 }
