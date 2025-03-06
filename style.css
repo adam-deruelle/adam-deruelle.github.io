@@ -21,10 +21,13 @@
 
 /* Style global du body */
 body {
+    display: flex;
+    flex-direction: column;
     margin: 40px;
     font-family: Arial, sans-serif;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
+    gap: 100px;
 }
 
 /* Style du header */
@@ -188,9 +191,6 @@ footer section {
     display: flex;
     justify-content: center;
 }
-
-
-
 
 footer ul, a{
     text-decoration: none;
