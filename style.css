@@ -235,3 +235,15 @@ footer p{
     align-items: left;
     gap: 100px;
 }
+
+.concevoir > p{
+    background-color: white;
+    color: black;
+    border-radius: 15px;
+}
+
+.parcours{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
