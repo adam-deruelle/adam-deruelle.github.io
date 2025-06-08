@@ -236,7 +236,7 @@ footer p{
     gap: 100px;
 }
 
-.concevoir li > p{
+.concevoir li{
     background-color: white;
     color: black;
     border-radius: 15px;
