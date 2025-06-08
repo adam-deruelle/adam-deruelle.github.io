@@ -70,27 +70,27 @@ h1 {
 }
 
 h2 {
-    font-family: "Jacques Francois";
+    font-family: "Figtree";
 }
 
 p {
-    font-family: "Jacques Francois";
+    font-family: "Figtree";
     font-size: 20px;
 }
 
 /* Sous-titres et texte ombré */
 .sous-titre-classique {
-    font-family: "Jacques Francois";
+    font-family: "Figtree";
     font-size: 40px;
 }
 
 .sous-titre{
-    font-family: "Jacques Francois Shadow";
+    font-family: "Figtree";
     font-size: 60px;
 }
 
 .text-ombre {
-    font-family: "Jacques Francois Shadow";
+    font-family: "Figtree";
     font-size: 20px;
 }
 
@@ -247,3 +247,13 @@ footer p{
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+/* 
+competences-articles {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+*/
