@@ -254,6 +254,7 @@ footer p{
 
 .btn-site{
     border: 1px solid var(--main-text-color);
+    background-color: var(--main-bg-color);
     padding: 5px 10px;
 }
 
