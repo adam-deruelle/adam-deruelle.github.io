@@ -250,6 +250,7 @@ footer p{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 25px;
 }
 
 .btn-site{
