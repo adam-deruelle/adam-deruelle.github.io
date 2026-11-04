@@ -1,0 +1,36 @@
+{
+  "meta": { "title": "Adam Deruelle · Portfolio" },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "path": "Background",
+    "contact": "Contact",
+    "cv": "Resume",
+    "cvLabel": "Download my resume (PDF, English)",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "main": "Main navigation",
+    "skip": "Skip to content"
+  },
+  "lang": { "label": "Site language", "fr": "Français", "en": "English" },
+  "contact": {
+    "title": "Get in touch",
+    "intro": "Email is the easiest way to reach me. I also reply on LinkedIn.",
+    "email": "Email",
+    "copy": "Copy address",
+    "copied": "Address copied",
+    "close": "Close"
+  },
+  "footer": {
+    "quote": "Never forget: whoever believes they know stops learning.",
+    "quoteAuthor": "Pierre Bottero",
+    "quoteBook": "Le Pacte des Marchombres",
+    "location": "Bruz, France (35170)",
+    "archive": "BUT skills archive",
+    "rights": "Adam Deruelle"
+  },
+  "wip": "[SECTION UNDER CONSTRUCTION]",
+  "notFound": { "title": "Page not found", "back": "Back to home" },
+  "social": { "linkedin": "LinkedIn (new tab)", "github": "GitHub (new tab)" }
+}

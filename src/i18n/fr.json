@@ -1,0 +1,36 @@
+{
+  "meta": { "title": "Adam Deruelle · Portfolio" },
+  "nav": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "path": "Parcours",
+    "contact": "Contact",
+    "cv": "CV",
+    "cvLabel": "Télécharger mon CV (PDF, français)",
+    "menu": "Menu",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "main": "Navigation principale",
+    "skip": "Aller au contenu"
+  },
+  "lang": { "label": "Langue du site", "fr": "Français", "en": "English" },
+  "contact": {
+    "title": "Me contacter",
+    "intro": "Le plus simple est de m'écrire un e-mail. Je réponds aussi sur LinkedIn.",
+    "email": "E-mail",
+    "copy": "Copier l'adresse",
+    "copied": "Adresse copiée",
+    "close": "Fermer"
+  },
+  "footer": {
+    "quote": "N'oublie jamais, celui qui croit savoir n'apprend plus.",
+    "quoteAuthor": "Pierre Bottero",
+    "quoteBook": "Le Pacte des Marchombres",
+    "location": "Bruz (35170)",
+    "archive": "Archive des compétences BUT",
+    "rights": "Adam Deruelle"
+  },
+  "wip": "[SECTION EN CONSTRUCTION]",
+  "notFound": { "title": "Page introuvable", "back": "Retour à l'accueil" },
+  "social": { "linkedin": "LinkedIn (nouvel onglet)", "github": "GitHub (nouvel onglet)" }
+}

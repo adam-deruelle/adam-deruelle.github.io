@@ -1,0 +1,21 @@
+<script setup>
+import { watchEffect } from 'vue'
+import { useI18n } from 'vue-i18n'
+import NavBar from './components/NavBar.vue'
+import SiteFooter from './components/SiteFooter.vue'
+import ContactModal from './components/ContactModal.vue'
+
+const { t } = useI18n()
+watchEffect(() => { document.title = t('meta.title') })
+</script>
+
+<template>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-navy focus:px-4 focus:py-2 focus:text-white"
+     @click.prevent="$refs.main.focus()">{{ t('nav.skip') }}</a>
+  <NavBar />
+  <main id="main" ref="main" tabindex="-1" class="min-h-screen pt-16 outline-none">
+    <router-view />
+  </main>
+  <SiteFooter />
+  <ContactModal />
+</template>
