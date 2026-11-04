@@ -7,6 +7,7 @@ import { openContact } from '@/contact'
 import { useLoc } from '@/i18n/loc'
 import { useAnchorChain } from '@/composables/useAnchorChain'
 import SailBoat from '@/components/home/SailBoat.vue'
+import StoneRock from '@/components/home/StoneRock.vue'
 
 const { t, tm, rt } = useI18n()
 const loc = useLoc()
@@ -23,12 +24,46 @@ function backToTop() {
   document.getElementById('main')?.focus({ preventScroll: true })
 }
 
-const fish = [
-  { left: '70%', top: '260px', w: 70, t: '55s' },
-  { left: '84%', top: '300px', w: 40, t: '48s' },
-  { left: '-10%', top: '1450px', w: 120, t: '70s', rev: true, o: 0.35 },
-  { left: '90%', top: '2300px', w: 90, t: '60s' },
-  { left: '-6%', top: '3200px', w: 60, t: '52s', rev: true }
+// Faune : plus on descend, plus c'est gros (top en % de la hauteur de la mer)
+const fauna = [
+  { kind: 'fish', left: '70%', top: '3%', w: 34, t: '48s' },
+  { kind: 'fish', left: '74%', top: '3.6%', w: 26, t: '48s' },
+  { kind: 'fish', left: '78%', top: '3.2%', w: 30, t: '48s' },
+  { kind: 'fish', left: '18%', top: '12%', w: 56, t: '60s', rev: true },
+  { kind: 'fish', left: '24%', top: '13%', w: 44, t: '60s', rev: true },
+  { kind: 'fish', left: '86%', top: '27%', w: 96, t: '64s' },
+  { kind: 'fish', left: '-8%', top: '40%', w: 140, t: '72s', rev: true, o: 0.4 },
+  { kind: 'shark', left: '92%', top: '52%', w: 280, t: '80s', o: 0.62 },
+  { kind: 'shark', left: '-20%', top: '66%', w: 380, t: '95s', rev: true, o: 0.6 },
+  { kind: 'lantern', left: '84%', top: '76%', w: 70, t: '70s' },
+  { kind: 'lantern', left: '10%', top: '82%', w: 84, t: '85s', rev: true },
+  { kind: 'lantern', left: '60%', top: '87%', w: 60, t: '75s' },
+  { kind: 'angler', left: '30%', top: '90%', w: 130, t: '120s', rev: true }
+]
+// Fond marin : algues et cailloux (les éléments « desk » n'apparaissent que sur grand écran)
+const W1 = 'M20 120 C6 90 32 70 18 40 C10 22 24 10 20 0'
+const W2 = 'M20 120 C32 92 8 70 22 44 C30 26 16 12 22 0'
+const W3 = 'M20 120 C12 100 28 84 20 64 C14 48 26 36 21 22'
+const weeds = [
+  { x: '44%', h: 120, d: W1, delay: '0s' }, { x: '46.5%', h: 90, d: W2, delay: '-2s' },
+  { x: '35%', h: 70, d: W3, delay: '-1s', desk: true, c: '#245a47' }, { x: '36.5%', h: 100, d: W1, delay: '-3s', desk: true },
+  { x: '66%', h: 110, d: W2, delay: '-1.5s', desk: true }, { x: '68%', h: 76, d: W3, delay: '-4s', desk: true, c: '#245a47' },
+  { x: '69.5%', h: 130, d: W1, delay: '-2.5s', desk: true }, { x: '79%', h: 84, d: W2, delay: '-0.5s', desk: true, c: '#245a47' },
+  { x: '2%', h: 90, d: W3, delay: '-3.5s', desk: true }, { x: '89%', h: 64, d: W3, delay: '-2s', desk: true }
+]
+const pebbles = [
+  { x: '70%', w: 60, h: 34, b: 44 }, { x: '30%', w: 36, h: 20, b: 40 },
+  { x: '50%', w: 44, h: 22, b: 46, desk: true, c: '#22384d' }, { x: '54%', w: 22, h: 14, b: 42, desk: true },
+  { x: '60%', w: 72, h: 40, b: 38, desk: true, c: '#1b3044' }, { x: '64.5%', w: 26, h: 16, b: 44, desk: true, c: '#2b4459' },
+  { x: '75%', w: 38, h: 22, b: 40, desk: true }, { x: '83%', w: 54, h: 30, b: 42, desk: true, c: '#22384d' },
+  { x: '39%', w: 30, h: 18, b: 44, desk: true, c: '#2b4459' }, { x: '93%', w: 30, h: 18, b: 40, desk: true }
+]
+// Peu de bulles : petits chapelets qui remontent vers la surface
+const bubbles = [
+  { x: '12%', y: '380px', s: 7, d: '9s', delay: '0s' }, { x: '12.6%', y: '420px', s: 4, d: '9s', delay: '-3s' },
+  { x: '57%', y: '900px', s: 9, d: '12s', delay: '-2s' }, { x: '57.8%', y: '950px', s: 5, d: '12s', delay: '-6s' },
+  { x: '28%', y: '1900px', s: 6, d: '14s', delay: '-4s' }, { x: '73%', y: '2600px', s: 8, d: '13s', delay: '-1s' },
+  { x: '73.5%', y: '2650px', s: 4, d: '13s', delay: '-7s' }, { x: '40%', y: '3400px', s: 6, d: '15s', delay: '-5s' }
 ]
 const rays = [
   { l: '18%', w: 70, r: 14 }, { l: '30%', w: 120, r: 8 }, { l: '44%', w: 60, r: 2 },
@@ -55,36 +90,55 @@ const rays = [
           <router-link to="/projets" class="btn btn-primary mt-7">{{ t('home.seeProjects') }}</router-link>
         </div>
       </div>
+      <div class="horizon" aria-hidden="true"></div>
       <SailBoat class="boat" :label="t('home.boatAlt')" />
     </header>
 
     <!-- Mer -->
     <div class="sea">
-      <svg class="surface" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true">
-        <path class="w1" d="M0 26 C120 10 240 40 360 24 S600 8 720 24 S960 40 1080 22 S1320 8 1440 24 V46 H0Z" />
-        <path class="w2" d="M0 26 C120 10 240 40 360 24 S600 8 720 24 S960 40 1080 22 S1320 8 1440 24" />
+      <svg class="surface" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="under" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5FB0D6" stop-opacity="0.9" />
+            <stop offset="1" stop-color="#2E7FAE" stop-opacity="1" />
+          </linearGradient>
+        </defs>
+        <path class="back" d="M0 30 C150 18 260 38 420 28 S700 14 860 30 S1160 42 1300 26 S1400 22 1440 28 V90 H0Z" />
+        <path d="M0 40 C120 26 240 54 360 38 S600 22 720 38 S960 54 1080 36 S1320 22 1440 38 V90 H0Z" fill="url(#under)" />
+        <path class="glint" d="M0 40 C120 26 240 54 360 38 S600 22 720 38 S960 54 1080 36 S1320 22 1440 38" />
+        <path class="glint2" d="M0 46 C120 34 240 60 360 45 S600 30 720 45 S960 60 1080 43 S1320 30 1440 45" />
       </svg>
       <div class="rays" aria-hidden="true">
         <span v-for="(r, i) in rays" :key="i" class="ray" :style="{ left: r.l, width: r.w + 'px', transform: `rotate(${r.r}deg)` }"></span>
       </div>
-      <div aria-hidden="true">
-        <span class="bubble" style="left: 12%; top: 60px; width: 8px; height: 8px"></span>
-        <span class="bubble" style="left: 13.4%; top: 90px; width: 5px; height: 5px"></span>
-        <span class="bubble" style="left: 36%; top: 110px; width: 6px; height: 6px"></span>
-        <span class="bubble" style="left: 61%; top: 70px; width: 9px; height: 9px"></span>
-        <span class="bubble" style="left: 62%; top: 104px; width: 4px; height: 4px"></span>
+      <div class="bubbles" aria-hidden="true">
+        <span v-for="(b, i) in bubbles" :key="'b' + i" class="bubble" :style="{ left: b.x, top: b.y, width: b.s + 'px', height: b.s + 'px', '--d': b.d, '--delay': b.delay }"></span>
       </div>
-      <svg
-        v-for="(f, i) in fish"
+      <div
+        v-for="(f, i) in fauna"
         :key="'f' + i"
-        class="fish"
-        :class="{ rev: f.rev }"
-        :style="{ left: f.left, top: f.top, width: f.w + 'px', '--t': f.t, opacity: f.o }"
-        viewBox="0 0 56 22"
+        class="fauna"
+        :class="[f.kind, { rev: f.rev }]"
+        :style="{ left: f.left, top: f.top, '--w': f.w + 'px', '--t': f.t, '--o': f.o }"
         aria-hidden="true"
       >
-        <path d="M2 11 C12 1 30 0 42 11 C30 22 12 21 2 11 Z M40 11 L54 2 L51 11 L54 20 Z" />
-      </svg>
+        <svg v-if="f.kind === 'fish'" viewBox="0 0 56 22"><path d="M2 11 C12 1 30 0 42 11 C30 22 12 21 2 11 Z M40 11 L54 2 L51 11 L54 20 Z" /></svg>
+        <svg v-else-if="f.kind === 'shark'" viewBox="0 0 200 70">
+          <path d="M2 40 C24 28 64 21 104 22 L124 3 L132 22 C158 24 176 28 184 31 L198 12 L194 37 L200 58 L183 43 C168 47 148 51 118 51 L110 62 L102 51 C78 51 38 49 2 40 Z" />
+          <path d="M66 46 L50 68 L82 49 Z" />
+        </svg>
+        <svg v-else-if="f.kind === 'lantern'" viewBox="0 0 60 24">
+          <path d="M2 12 C10 3 28 1 42 10 L56 3 L53 12 L56 21 L42 14 C28 23 10 21 2 12 Z" />
+          <circle class="eye" cx="10" cy="10" r="2.6" />
+          <g class="glow"><circle cx="16" cy="15" r="1.4" /><circle cx="21" cy="16" r="1.4" /><circle cx="26" cy="16.4" r="1.4" /><circle cx="31" cy="16.2" r="1.4" /><circle cx="36" cy="15.4" r="1.4" /><circle cx="24" cy="8" r="1.2" /></g>
+        </svg>
+        <svg v-else viewBox="0 0 120 80">
+          <path d="M14 46 C14 26 34 14 58 16 C80 18 94 30 100 40 L118 28 L114 46 L118 64 L100 54 C90 66 70 72 50 70 C30 68 14 62 14 46 Z M14 46 L28 50 L16 56 Z" />
+          <path class="line" d="M40 18 C34 2 16 0 8 10" />
+          <circle class="lure" cx="8" cy="12" r="3.2" />
+          <path class="teeth" d="M15 48 L19 52 L22 47 L25 52 L28 47" />
+        </svg>
+      </div>
 
       <!-- transition : sous la surface -->
       <div class="lanepad container-site pt-[70px]">
@@ -132,7 +186,6 @@ const rays = [
               <div class="img">
                 <img v-if="p.image" :src="p.image" :alt="loc(p.imageAlt)" loading="lazy" decoding="async" width="1200" height="900" />
                 <span v-else>{{ loc(p.imagePlaceholder) || t('projects.imageSoon') }}</span>
-                <span class="pin" aria-hidden="true"></span>
               </div>
             </article>
           </div>
@@ -168,20 +221,20 @@ const rays = [
         </div>
         <div class="container-site">
           <div class="bed">
-            <svg class="weed" style="left: 44%" viewBox="0 0 40 120" aria-hidden="true"><path d="M20 120 C6 90 32 70 18 40 C10 22 24 10 20 0" /></svg>
-            <svg class="weed" style="left: 47%; height: 90px; animation-delay: -2s" viewBox="0 0 40 120" aria-hidden="true"><path d="M20 120 C32 92 8 70 22 44 C30 26 16 12 22 0" /></svg>
-            <span class="pebble" style="left: 70%; width: 60px; height: 34px" aria-hidden="true"></span>
-            <span class="pebble" style="left: 30%; width: 36px; height: 20px; bottom: 40px" aria-hidden="true"></span>
-            <div class="rock r1">
+            <svg v-for="(w, i) in weeds" :key="'w' + i" class="weed" :class="{ desk: w.desk }" :style="{ left: w.x, height: w.h + 'px', animationDelay: w.delay, stroke: w.c }" viewBox="0 0 40 120" aria-hidden="true"><path :d="w.d" /></svg>
+            <span v-for="(p, i) in pebbles" :key="'p' + i" class="pebble" :class="{ desk: p.desk }" :style="{ left: p.x, width: p.w + 'px', height: p.h + 'px', bottom: p.b + 'px', background: p.c }" aria-hidden="true"></span>
+            <StoneRock class="rock r1" :shape="1" :seed="4">
               <h3>{{ t('home.floor.networks') }}</h3>
+              <span class="sep" aria-hidden="true"></span>
               <a :href="site.linkedin" target="_blank" rel="noopener">LinkedIn</a>
               <a :href="site.github" target="_blank" rel="noopener">GitHub</a>
               <a :href="'mailto:' + site.email">{{ site.email }}</a>
-            </div>
-            <div class="rock r2">
+            </StoneRock>
+            <StoneRock class="rock r2" :shape="2" :seed="11">
               <h3>{{ t('home.floor.address') }}</h3>
+              <span class="sep" aria-hidden="true"></span>
               <p>{{ site.location }}</p>
-            </div>
+            </StoneRock>
             <button type="button" class="anchor" :aria-label="t('home.floor.backTop')" @click="backToTop">
               <span class="tip" aria-hidden="true">{{ t('home.floor.tip') }}</span>
               <svg viewBox="0 0 96 124" aria-hidden="true">
@@ -224,29 +277,45 @@ const rays = [
 .hero-copy h1 { color: #000022; font-size: clamp(40px, 6.4vw, 82px); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.02; }
 .tagline { font: 500 clamp(20px, 2.4vw, 28px) / 1.25 'Space Grotesk', system-ui, sans-serif; margin-top: 16px; }
 .sub { margin-top: 12px; color: #16425b; font-weight: 500; }
-.boat { position: absolute; right: 6%; bottom: -34px; width: min(330px, 38vw); z-index: 3; }
+.boat { position: absolute; right: 6%; bottom: 6px; width: min(330px, 38vw); z-index: 3; }
 
 /* mer */
 .sea { position: relative; background: linear-gradient(to bottom, var(--surface) 0, #1a5f8a 7%, #0e3f66 22%, #082a4a 45%, #041a33 70%, #020c1c 100%); }
-.surface { display: block; width: 100%; height: 46px; margin-top: -45px; position: relative; z-index: 2; }
-.surface .w1 { fill: var(--surface); }
-.surface .w2 { fill: none; stroke: rgba(255, 255, 255, 0.55); stroke-width: 2; }
+.horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background: linear-gradient(to bottom, #4f9cc4, #3a8bbb 60%, #2e7fae); z-index: 2; }
+.horizon::before { content: ''; position: absolute; inset: 14px 0 auto; height: 1px; background: rgba(255, 255, 255, 0.28); filter: blur(0.6px); }
+.surface { display: block; width: 100%; height: 90px; margin-top: -58px; position: relative; z-index: 4; pointer-events: none; }
+.surface .back { fill: rgba(46, 127, 174, 0.55); }
+.surface .glint { fill: none; stroke: rgba(255, 255, 255, 0.85); stroke-width: 2.5; }
+.surface .glint2 { fill: none; stroke: rgba(255, 255, 255, 0.25); stroke-width: 6; filter: blur(3px); }
 .rays { position: absolute; inset: 0 0 auto 0; height: 1300px; pointer-events: none; overflow: hidden; mix-blend-mode: screen; }
 .ray { position: absolute; top: -60px; height: 100%; transform-origin: 50% 0; background: linear-gradient(to bottom, rgba(214, 236, 243, 0.42), rgba(214, 236, 243, 0.12) 45%, rgba(214, 236, 243, 0) 85%); filter: blur(10px); }
-.bubble { position: absolute; border: 1.5px solid rgba(255, 255, 255, 0.5); border-radius: 50%; }
-.fish { position: absolute; fill: #010814; opacity: 0.45; pointer-events: none; z-index: 1; }
-.fish.rev { transform: scaleX(-1); }
+.bubbles { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.bubble { position: absolute; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.55); background: radial-gradient(circle at 32% 30%, rgba(255, 255, 255, 0.85) 0 14%, rgba(255, 255, 255, 0.12) 22%, rgba(180, 225, 245, 0.06) 60%, rgba(255, 255, 255, 0.25) 100%); }
+/* faune : silhouettes ; les poissons-lanternes et la baudroie ont des points lumineux */
+.fauna { position: absolute; width: var(--w); opacity: var(--o, 0.45); pointer-events: none; z-index: 1; }
+.fauna svg { display: block; width: 100%; height: auto; overflow: visible; fill: #010814; }
+.fauna.rev svg { transform: scaleX(-1); }
+.fauna.lantern, .fauna.angler { opacity: 1; }
+.fauna.lantern svg > path, .fauna.angler svg > path:first-child { fill: #01060f; }
+.fauna .glow circle, .fauna .eye { fill: #7fe3ff; filter: drop-shadow(0 0 3px #7fe3ff) drop-shadow(0 0 6px rgba(127, 227, 255, 0.6)); }
+.fauna .line { fill: none; stroke: #01060f; stroke-width: 2; }
+.fauna .lure { fill: #bff6ff; filter: drop-shadow(0 0 6px #7fe3ff) drop-shadow(0 0 14px rgba(127, 227, 255, 0.7)); }
+.fauna .teeth { fill: none; stroke: rgba(200, 220, 230, 0.5); stroke-width: 1.2; }
 @media (prefers-reduced-motion: no-preference) {
   .ray { animation: shimmer 7s ease-in-out infinite alternate; }
   .ray:nth-child(2n) { animation-duration: 9s; }
   .ray:nth-child(3n) { animation-delay: -3s; }
-  .fish { animation: swim var(--t, 40s) linear infinite; }
-  .fish.rev { animation-name: swimr; }
+  .fauna { animation: swim var(--t, 40s) linear infinite; }
+  .fauna.rev { animation-name: swimr; }
+  .fauna .glow, .fauna .lure { animation: blink 3.5s ease-in-out infinite alternate; }
   .weed { transform-origin: 50% 100%; animation: sway 5s ease-in-out infinite alternate; }
+  .bubble { animation: rise var(--d, 10s) linear var(--delay, 0s) infinite; }
 }
 @keyframes shimmer { from { opacity: 0.55; } to { opacity: 1; } }
 @keyframes swim { from { transform: translateX(0); } to { transform: translateX(-120vw); } }
-@keyframes swimr { from { transform: translateX(0) scaleX(-1); } to { transform: translateX(120vw) scaleX(-1); } }
+@keyframes swimr { from { transform: translateX(0); } to { transform: translateX(120vw); } }
+@keyframes blink { from { opacity: 0.45; } to { opacity: 1; } }
+@keyframes rise { 0% { transform: translate(0, 0); opacity: 0; } 10% { opacity: 1; } 50% { transform: translate(4px, -160px); } 90% { opacity: 1; } 100% { transform: translate(-3px, -320px); opacity: 0; } }
 @keyframes sway { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
 
 .transition-ph { height: clamp(150px, 20vw, 240px); border: 1px solid rgba(230, 238, 246, 0.28); display: grid; place-items: center; font: 600 12px 'IBM Plex Mono', monospace; letter-spacing: 0.08em; color: #a3b4c8; background: rgba(0, 0, 34, 0.18); position: relative; z-index: 2; }
@@ -267,10 +336,6 @@ dd { margin: 4px 0 0; font-weight: 500; }
 .stop.r .img { order: -1; }
 .img { position: relative; aspect-ratio: 4 / 3; border: 1px solid rgba(230, 238, 246, 0.28); background: rgba(0, 0, 34, 0.25); display: grid; place-items: center; font: 600 11px 'IBM Plex Mono', monospace; letter-spacing: 0.08em; color: #a3b4c8; text-align: center; padding: 10px; }
 .img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.pin { position: absolute; bottom: -26px; width: 52px; height: 52px; border-radius: 50%; background: #041a33; border: 1px solid rgba(230, 238, 246, 0.28); display: grid; place-items: center; }
-.pin::after { content: ''; width: 14px; height: 14px; border-radius: 50%; background: #ee6a4d; box-shadow: 0 0 0 6px rgba(238, 106, 77, 0.22); }
-.stop.l .pin { right: -26px; }
-.stop.r .pin { left: -26px; }
 .meta { font: 600 11px 'IBM Plex Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase; color: #a3b4c8; }
 .stop h3 { font-size: clamp(22px, 2.4vw, 30px); font-weight: 600; letter-spacing: 0.03em; margin-top: 8px; }
 .tags { margin-top: 12px; font: 500 12.5px 'IBM Plex Mono', monospace; color: #a3b4c8; }
@@ -286,13 +351,10 @@ dd { margin: 4px 0 0; font-weight: 500; }
 .seabed-img { width: 100%; object-fit: cover; }
 .bed { position: relative; height: 260px; }
 .sand { position: absolute; left: -100vw; right: -100vw; bottom: 0; height: 90px; background: #0d1b2b; clip-path: polygon(0 40%, 8% 30%, 18% 38%, 30% 26%, 44% 36%, 58% 24%, 70% 34%, 84% 22%, 100% 32%, 100% 100%, 0 100%); }
-.rock { position: absolute; bottom: 40px; z-index: 1; color: #e6eef6; background: radial-gradient(120% 90% at 30% 25%, #3a5570 0, #22384d 45%, #14263a 100%); box-shadow: inset -14px -18px 30px rgba(0, 0, 0, 0.45), inset 10px 10px 24px rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; justify-content: center; padding: 26px 34px; }
-.rock h3 { font: 600 12px 'IBM Plex Mono', monospace; letter-spacing: 0.18em; text-transform: uppercase; color: #a3b4c8; }
-.rock a, .rock p { display: block; margin-top: 6px; font-weight: 500; text-decoration: none; overflow-wrap: anywhere; }
-.rock a:hover { color: #ee6a4d; }
-.rock.r1 { left: 0; width: min(340px, 48%); height: 210px; border-radius: 46% 54% 38% 44% / 58% 52% 30% 32%; }
-.rock.r2 { left: min(380px, 52%); width: min(250px, 40%); height: 150px; border-radius: 52% 48% 40% 42% / 62% 58% 28% 30%; }
-.pebble { position: absolute; bottom: 44px; border-radius: 50% 50% 40% 40%; background: #14263a; z-index: 1; }
+.rock { position: absolute; bottom: 34px; z-index: 1; }
+.rock.r1 { left: 0; width: min(380px, 50%); height: 230px; }
+.rock.r2 { left: min(420px, 53%); width: min(280px, 40%); height: 170px; }
+.pebble { position: absolute; bottom: 44px; border-radius: 50% 50% 40% 40%; background: #14263a; z-index: 1; box-shadow: inset -4px -5px 8px rgba(0, 0, 0, 0.45), inset 3px 3px 6px rgba(255, 255, 255, 0.06); }
 .weed { position: absolute; bottom: 60px; width: 40px; height: 120px; fill: none; stroke: #1c4a3e; stroke-width: 5; stroke-linecap: round; }
 .anchor { position: absolute; right: calc(var(--lane) / 2 - 48px); bottom: 46px; width: 96px; height: 124px; background: none; border: 0; padding: 0; cursor: pointer; color: #c9d6e2; z-index: 3; }
 .anchor svg { width: 100%; height: 100%; }
@@ -302,23 +364,22 @@ dd { margin: 4px 0 0; font-weight: 500; }
 .anchor:hover .tip, .anchor:focus-visible .tip { opacity: 1; }
 
 @media (max-width: 860px) {
+  .desk { display: none; }
+  .fauna { width: calc(var(--w) * 0.6); }
   .page { --lane: 56px; --sky: 620px; }
   .lanepad { padding-right: calc(var(--lane) + 1rem); }
   .hero-copy { padding-top: 104px; }
   .about, .stop { grid-template-columns: 1fr; gap: 22px; }
   .stop.r .img { order: 0; }
   .timeline { gap: 64px; }
-  .stop .pin, .stop.r .pin { left: auto; right: -14px; bottom: auto; top: -14px; width: 40px; height: 40px; }
   .boat { width: min(230px, 55vw); right: 4%; }
-  .rock.r1 { width: 62%; }
-  .rock.r2 { left: auto; right: calc(var(--lane) + 30px); width: 44%; bottom: 150px; }
-  .bed { height: 340px; }
+  .rock.r1 { width: min(340px, 74%); height: 200px; }
+  .rock.r2 { left: auto; right: calc(var(--lane) + 8px); width: min(260px, 62%); height: 150px; bottom: 240px; }
+  .bed { height: 420px; }
   .anchor { width: 64px; height: 84px; right: calc(var(--lane) / 2 - 32px); }
 }
 @media (max-width: 520px) {
-  .rock { padding: 18px 20px; }
-  .rock.r1 { width: 78%; }
-  .rock.r2 { width: 60%; right: var(--lane); bottom: 190px; }
-  .bed { height: 400px; }
+  .rock.r1 { width: 84%; height: 190px; }
+  .rock.r2 { width: 66%; right: var(--lane); height: 140px; bottom: 236px; }
 }
 </style>
