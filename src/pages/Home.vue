@@ -223,14 +223,14 @@ const rays = [
           <div class="bed">
             <svg v-for="(w, i) in weeds" :key="'w' + i" class="weed" :class="{ desk: w.desk }" :style="{ left: w.x, height: w.h + 'px', animationDelay: w.delay, stroke: w.c }" viewBox="0 0 40 120" aria-hidden="true"><path :d="w.d" /></svg>
             <span v-for="(p, i) in pebbles" :key="'p' + i" class="pebble" :class="{ desk: p.desk }" :style="{ left: p.x, width: p.w + 'px', height: p.h + 'px', bottom: p.b + 'px', background: p.c }" aria-hidden="true"></span>
-            <StoneRock class="rock r1" :shape="1" :seed="4">
+            <StoneRock class="rock r1" :shape="1">
               <h3>{{ t('home.floor.networks') }}</h3>
               <span class="sep" aria-hidden="true"></span>
               <a :href="site.linkedin" target="_blank" rel="noopener">LinkedIn</a>
               <a :href="site.github" target="_blank" rel="noopener">GitHub</a>
               <a :href="'mailto:' + site.email">{{ site.email }}</a>
             </StoneRock>
-            <StoneRock class="rock r2" :shape="2" :seed="11">
+            <StoneRock class="rock r2" :shape="2">
               <h3>{{ t('home.floor.address') }}</h3>
               <span class="sep" aria-hidden="true"></span>
               <p>{{ site.location }}</p>
