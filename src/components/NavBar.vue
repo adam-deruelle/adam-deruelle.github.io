@@ -39,12 +39,8 @@ function contact() { open.value = false; openContact() }
             :aria-current="isActive(l.to) ? 'page' : undefined"
           >{{ t(l.key) }}</router-link>
         </li>
-        <li>
-          <button type="button" class="border-b-2 border-transparent py-1 font-medium transition-colors hover:text-link" @click="contact">
-            {{ t('nav.contact') }}
-          </button>
-        </li>
       </ul>
+      <button type="button" class="btn hidden md:inline-flex" @click="contact">{{ t('nav.contact') }}</button>
       <CvButton class="hidden md:inline-flex" />
       <LangSwitch />
       <ThemeSwitch />
@@ -70,8 +66,10 @@ function contact() { open.value = false; openContact() }
         <li v-for="l in links" :key="l.to">
           <router-link :to="l.to" class="block rounded-md px-2 py-2.5 font-medium hover:bg-mist" :aria-current="isActive(l.to) ? 'page' : undefined">{{ t(l.key) }}</router-link>
         </li>
-        <li><button type="button" class="block w-full rounded-md px-2 py-2.5 text-left font-medium hover:bg-mist" @click="contact">{{ t('nav.contact') }}</button></li>
-        <li class="pt-2"><CvButton class="w-full" /></li>
+        <li class="grid grid-cols-2 gap-2 pt-2">
+          <button type="button" class="btn w-full" @click="contact">{{ t('nav.contact') }}</button>
+          <CvButton class="w-full" />
+        </li>
       </ul>
     </div>
   </header>
