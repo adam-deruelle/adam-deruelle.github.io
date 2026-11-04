@@ -339,11 +339,11 @@ dd { margin: 4px 0 0; font-weight: 500; }
 .floor { position: relative; z-index: 2; padding-top: 100px; }
 .seabed-ph, .seabed-img { height: 120px; margin-bottom: 60px; }
 .seabed-img { width: 100%; object-fit: cover; }
-.bed { position: relative; height: 260px; }
+.bed { position: relative; height: 200px; }
 .sand { position: absolute; left: -100vw; right: -100vw; bottom: 0; height: 90px; background: #0d1b2b; clip-path: polygon(0 40%, 8% 30%, 18% 38%, 30% 26%, 44% 36%, 58% 24%, 70% 34%, 84% 22%, 100% 32%, 100% 100%, 0 100%); }
 .rock { position: absolute; bottom: 34px; z-index: 1; }
-.rock.r1 { left: 0; width: min(380px, 50%); height: 230px; }
-.rock.r2 { left: min(420px, 53%); width: min(280px, 40%); height: 170px; }
+.rock.r1 { left: 0; width: min(250px, 34%); height: 150px; }
+.rock.r2 { left: min(280px, 37%); width: min(185px, 26%); height: 112px; }
 .pebble { position: absolute; bottom: 44px; border-radius: 50% 50% 40% 40%; background: #14263a; z-index: 1; box-shadow: inset -4px -5px 8px rgba(0, 0, 0, 0.45), inset 3px 3px 6px rgba(255, 255, 255, 0.06); }
 .weed { position: absolute; bottom: 60px; width: 40px; height: 120px; fill: none; stroke: #1c4a3e; stroke-width: 5; stroke-linecap: round; }
 .anchor { position: absolute; right: calc(var(--lane) / 2 - 48px); bottom: 46px; width: 96px; height: 124px; background: none; border: 0; padding: 0; cursor: pointer; color: #c9d6e2; z-index: 3; }
@@ -363,13 +363,9 @@ dd { margin: 4px 0 0; font-weight: 500; }
   .stop.r .img { order: 0; }
   .timeline { gap: 64px; }
   .boat { width: min(230px, 55vw); right: 4%; }
-  .rock.r1 { width: min(340px, 74%); height: 200px; }
-  .rock.r2 { left: auto; right: calc(var(--lane) + 8px); width: min(260px, 62%); height: 150px; bottom: 240px; }
-  .bed { height: 420px; }
+  .rock.r1 { width: 42%; height: 104px; }
+  .rock.r2 { left: 45%; width: 30%; height: 78px; }
+  .bed { height: 180px; }
   .anchor { width: 64px; height: 84px; right: calc(var(--lane) / 2 - 32px); }
-}
-@media (max-width: 520px) {
-  .rock.r1 { width: 84%; height: 190px; }
-  .rock.r2 { width: 66%; right: var(--lane); height: 140px; bottom: 236px; }
 }
 </style>
