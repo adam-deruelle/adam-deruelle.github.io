@@ -3,6 +3,7 @@ export const site = {
   email: 'adam.deruelle@gmail.com',
   linkedin: 'https://www.linkedin.com/in/adam-deruelle-',
   github: 'https://github.com/adam-deruelle',
+  photo: null, // ex. '/images/adam.webp' une fois la photo fournie
   // CV une colonne, choisi selon la langue du site (fichiers dans public/cv/)
   cv: {
     fr: '/cv/CV_Adam_Deruelle_FR.pdf',

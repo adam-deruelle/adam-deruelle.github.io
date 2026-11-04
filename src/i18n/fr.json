@@ -1,5 +1,7 @@
 {
-  "meta": { "title": "Adam Deruelle · Portfolio" },
+  "meta": {
+    "title": "Adam Deruelle · Portfolio"
+  },
   "nav": {
     "home": "Accueil",
     "projects": "Projets",
@@ -13,7 +15,11 @@
     "main": "Navigation principale",
     "skip": "Aller au contenu"
   },
-  "lang": { "label": "Langue du site", "fr": "Français", "en": "English" },
+  "lang": {
+    "label": "Langue du site",
+    "fr": "Français",
+    "en": "English"
+  },
   "contact": {
     "title": "Me contacter",
     "intro": "Le plus simple est de m'écrire un e-mail. Je réponds aussi sur LinkedIn.",
@@ -31,6 +37,71 @@
     "rights": "Adam Deruelle"
   },
   "wip": "[SECTION EN CONSTRUCTION]",
-  "notFound": { "title": "Page introuvable", "back": "Retour à l'accueil" },
-  "social": { "linkedin": "LinkedIn (nouvel onglet)", "github": "GitHub (nouvel onglet)" }
+  "notFound": {
+    "title": "Page introuvable",
+    "back": "Retour à l'accueil"
+  },
+  "social": {
+    "linkedin": "LinkedIn (nouvel onglet)",
+    "github": "GitHub (nouvel onglet)"
+  },
+  "home": {
+    "photoSoon": "[PHOTO À VENIR]",
+    "photoAlt": "Portrait d'Adam Deruelle",
+    "tagline": "Imaginer, concevoir, robotiser.",
+    "subtitle": [
+      "Alternant maintenance & automatisme",
+      "BUT GEII",
+      "Futur ingénieur robotique"
+    ],
+    "seeProjects": "Voir mes projets",
+    "cv": "Télécharger mon CV",
+    "discover": "Découvrir",
+    "scrollLabel": "Défiler vers la présentation",
+    "illuAlt": "Illustration : un automate, un bras robotisé et un voilier",
+    "about": {
+      "eyebrow": "À propos",
+      "title": "De la maintenance industrielle à la robotique",
+      "p1": "Étudiant en 3ᵉ année de BUT GEII à l'IUT de Rennes, je suis en alternance au service maintenance du Groupe Rocher, à La Gacilly. J'y travaille sur des automates et des équipements électropneumatiques de production.",
+      "p2": "À côté, je conçois Talos, un assistant robotique personnel. Mon objectif : devenir ingénieur en robotique ou mécatronique.",
+      "facts": [
+        {
+          "k": "Formation",
+          "v": "BUT GEII, IUT de Rennes (2024-2027)"
+        },
+        {
+          "k": "Alternance",
+          "v": "Groupe Rocher, service maintenance (2025-2027)"
+        },
+        {
+          "k": "Basé à",
+          "v": "Bruz (35170)"
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "Réalisations",
+      "title": "Projets mis en avant",
+      "all": "Voir tous les projets"
+    },
+    "seek": {
+      "eyebrow": "Je recherche",
+      "title": "Une alternance en école d'ingénieur, en robotique ou mécatronique",
+      "items": [
+        "Cursus FISA",
+        "À partir de septembre 2027",
+        "Toute la France"
+      ],
+      "cta": "Me contacter"
+    }
+  },
+  "projects": {
+    "types": {
+      "pro": "Pro",
+      "perso": "Perso",
+      "cours": "Cours"
+    },
+    "tags": "Technologies",
+    "imageSoon": "[PHOTO À VENIR]"
+  }
 }

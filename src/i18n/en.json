@@ -1,5 +1,7 @@
 {
-  "meta": { "title": "Adam Deruelle · Portfolio" },
+  "meta": {
+    "title": "Adam Deruelle · Portfolio"
+  },
   "nav": {
     "home": "Home",
     "projects": "Projects",
@@ -13,7 +15,11 @@
     "main": "Main navigation",
     "skip": "Skip to content"
   },
-  "lang": { "label": "Site language", "fr": "Français", "en": "English" },
+  "lang": {
+    "label": "Site language",
+    "fr": "Français",
+    "en": "English"
+  },
   "contact": {
     "title": "Get in touch",
     "intro": "Email is the easiest way to reach me. I also reply on LinkedIn.",
@@ -31,6 +37,71 @@
     "rights": "Adam Deruelle"
   },
   "wip": "[SECTION UNDER CONSTRUCTION]",
-  "notFound": { "title": "Page not found", "back": "Back to home" },
-  "social": { "linkedin": "LinkedIn (new tab)", "github": "GitHub (new tab)" }
+  "notFound": {
+    "title": "Page not found",
+    "back": "Back to home"
+  },
+  "social": {
+    "linkedin": "LinkedIn (new tab)",
+    "github": "GitHub (new tab)"
+  },
+  "home": {
+    "photoSoon": "[PHOTO COMING SOON]",
+    "photoAlt": "Portrait of Adam Deruelle",
+    "tagline": "Imagine, design, robotize.",
+    "subtitle": [
+      "Maintenance & automation apprentice",
+      "BUT GEII (electrical engineering)",
+      "Future robotics engineer"
+    ],
+    "seeProjects": "See my projects",
+    "cv": "Download my resume",
+    "discover": "Discover",
+    "scrollLabel": "Scroll to the introduction",
+    "illuAlt": "Illustration: a PLC, a robot arm and a sailboat",
+    "about": {
+      "eyebrow": "About",
+      "title": "From industrial maintenance to robotics",
+      "p1": "I am a third-year student in a BUT GEII (Electrical Engineering and Industrial Computing) at IUT de Rennes, France, on a work-study contract with the maintenance department of Groupe Rocher in La Gacilly. There, I work on PLCs and electro-pneumatic production equipment.",
+      "p2": "On the side, I am building Talos, a personal robotic assistant. My goal: becoming a robotics or mechatronics engineer.",
+      "facts": [
+        {
+          "k": "Education",
+          "v": "BUT GEII, IUT de Rennes (2024-2027)"
+        },
+        {
+          "k": "Work-study",
+          "v": "Groupe Rocher, maintenance department (2025-2027)"
+        },
+        {
+          "k": "Based in",
+          "v": "Bruz, France (35170)"
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "Work",
+      "title": "Featured projects",
+      "all": "See all projects"
+    },
+    "seek": {
+      "eyebrow": "Looking for",
+      "title": "A work-study engineering degree in robotics or mechatronics",
+      "items": [
+        "Work-study (FISA) program",
+        "From September 2027",
+        "Anywhere in France"
+      ],
+      "cta": "Get in touch"
+    }
+  },
+  "projects": {
+    "types": {
+      "pro": "Pro",
+      "perso": "Personal",
+      "cours": "Coursework"
+    },
+    "tags": "Technologies",
+    "imageSoon": "[PHOTO COMING SOON]"
+  }
 }
