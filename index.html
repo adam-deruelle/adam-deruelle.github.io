@@ -5,10 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adam Deruelle · Portfolio</title>
     <meta name="description" content="Adam Deruelle, alternant maintenance et automatisme en BUT GEII, futur ingénieur robotique. Projets, parcours et contact." />
-    <meta name="theme-color" content="#1E3A5F" />
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000022" media="(prefers-color-scheme: dark)" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      // Applique le thème avant le premier affichage : choix mémorisé, sinon réglage de l'appareil.
+      (function () {
+        var t = null
+        try { t = localStorage.getItem('theme') } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        if (t === 'dark') document.documentElement.classList.add('dark')
+      })()
+    </script>
   </head>
-  <body class="bg-white text-navy font-sans antialiased">
+  <body class="font-sans antialiased">
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>

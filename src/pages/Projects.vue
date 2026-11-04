@@ -26,7 +26,7 @@ const select = (f) => router.replace({ query: f === 'all' ? {} : { type: f } })
         type="button"
         :aria-pressed="active === f"
         class="rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors"
-        :class="active === f ? 'border-navy bg-navy text-white' : 'border-line bg-white hover:border-orange hover:text-orange'"
+        :class="active === f ? 'border-title bg-title text-page' : 'border-line bg-surface hover:border-primary-hover hover:text-link'"
         @click="select(f)"
       >
         {{ f === 'all' ? t('projects.all') : t('projects.types.' + f) }}

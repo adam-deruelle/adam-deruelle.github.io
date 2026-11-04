@@ -139,5 +139,9 @@
     "intro": "Auto-évaluations rédigées à la fin de ma 1ʳᵉ année de BUT GEII, reprises telles quelles de mon ancien site.",
     "level": "Niveau {n} sur 5",
     "onlyFr": ""
+  },
+  "theme": {
+    "toLight": "Passer au thème clair",
+    "toDark": "Passer au thème sombre"
   }
 }

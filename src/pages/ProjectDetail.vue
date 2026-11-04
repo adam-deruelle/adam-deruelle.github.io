@@ -22,7 +22,7 @@ watchEffect(() => {
   <template v-if="p">
     <PageHeader :title="loc(p.title)" :intro="loc(p.summary)">
       <template #before>
-        <router-link to="/projets" class="mb-5 inline-flex items-center gap-1 text-sm font-semibold text-orange hover:underline">← {{ t('project.back') }}</router-link>
+        <router-link to="/projets" class="mb-5 inline-flex items-center gap-1 text-sm font-semibold text-link hover:underline">← {{ t('project.back') }}</router-link>
         <div class="mb-3 flex flex-wrap items-center gap-3">
           <TypeBadge :type="p.type" />
           <span v-if="p.context" class="text-sm text-muted">{{ loc(p.context) }}</span>
@@ -44,7 +44,7 @@ watchEffect(() => {
           <h2 class="text-2xl font-bold">{{ t('project.role') }}</h2>
           <ul class="mt-3 max-w-prose space-y-2">
             <li v-for="(r, i) in loc(d.role)" :key="i" class="flex gap-3">
-              <span class="mt-2 h-2 w-2 shrink-0 rotate-45 bg-coral" aria-hidden="true"></span><span>{{ r }}</span>
+              <span class="mt-2 h-2 w-2 shrink-0 rotate-45 bg-hl" aria-hidden="true"></span><span>{{ r }}</span>
             </li>
           </ul>
         </section>
@@ -69,7 +69,7 @@ watchEffect(() => {
           <h2 class="text-2xl font-bold">{{ t('project.results') }}</h2>
           <ul class="mt-3 max-w-prose space-y-2">
             <li v-for="(r, i) in loc(d.results)" :key="i" class="flex gap-3">
-              <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-teal" aria-hidden="true"></span><span>{{ r }}</span>
+              <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" aria-hidden="true"></span><span>{{ r }}</span>
             </li>
           </ul>
         </section>

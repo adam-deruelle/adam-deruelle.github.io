@@ -13,7 +13,7 @@ watchEffect(() => { route.fullPath; document.title = t('meta.title') })
 </script>
 
 <template>
-  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-navy focus:px-4 focus:py-2 focus:text-white"
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-primary focus:px-4 focus:py-2 focus:text-on-primary"
      @click.prevent="$refs.main.focus()">{{ t('nav.skip') }}</a>
   <NavBar />
   <main id="main" ref="main" tabindex="-1" class="min-h-screen pt-16 outline-none">

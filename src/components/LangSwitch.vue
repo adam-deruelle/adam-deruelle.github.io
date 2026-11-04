@@ -14,7 +14,7 @@ const { locale, t } = useI18n()
       :aria-pressed="locale === l"
       :aria-label="t('lang.' + l)"
       class="px-2.5 py-1.5 uppercase transition-colors"
-      :class="locale === l ? 'bg-navy text-white' : 'text-muted hover:text-orange'"
+      :class="locale === l ? 'bg-title text-page' : 'text-muted hover:text-link'"
       @click="setLocale(l)"
     >
       {{ l }}

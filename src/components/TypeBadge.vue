@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 defineProps({ type: { type: String, required: true } })
 const { t } = useI18n()
-const cls = { pro: 'bg-[#FBE3DC] text-[#8A2E07]', perso: 'bg-[#D7EFEC] text-[#1B6A60]', cours: 'bg-[#FFF0CC] text-[#6B4A00]' }
+const cls = { pro: 'bg-pro text-on-pro', perso: 'bg-perso text-on-perso', cours: 'bg-cours text-on-cours' }
 </script>
 
 <template>

@@ -139,5 +139,9 @@
     "intro": "Self-assessments written at the end of my first year of BUT GEII, kept as they were on my former website.",
     "level": "Level {n} out of 5",
     "onlyFr": "These texts are only available in French."
+  },
+  "theme": {
+    "toLight": "Switch to light theme",
+    "toDark": "Switch to dark theme"
   }
 }

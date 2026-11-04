@@ -27,7 +27,7 @@ async function copy() {
   <dialog
     ref="dialog"
     aria-labelledby="contact-title"
-    class="w-[min(92vw,28rem)] rounded-2xl p-0 text-navy shadow-2xl backdrop:bg-navy/50 backdrop:backdrop-blur-sm"
+    class="w-[min(92vw,28rem)] rounded-2xl bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm"
     @close="closeContact"
     @click="onBackdrop"
   >
@@ -42,10 +42,10 @@ async function copy() {
 
       <div class="mt-6 rounded-xl bg-mist p-4">
         <p class="text-xs font-bold uppercase tracking-wider text-muted">{{ t('contact.email') }}</p>
-        <a :href="'mailto:' + site.email" class="mt-1 flex items-center gap-2 break-all font-semibold hover:text-orange">
+        <a :href="'mailto:' + site.email" class="mt-1 flex items-center gap-2 break-all font-semibold hover:text-link">
           <SocialIcon name="mail" class="h-5 w-5 shrink-0" />{{ site.email }}
         </a>
-        <button type="button" class="mt-3 text-sm font-semibold text-orange hover:underline" @click="copy">
+        <button type="button" class="mt-3 text-sm font-semibold text-link hover:underline" @click="copy">
           {{ copied ? t('contact.copied') : t('contact.copy') }}
         </button>
         <span class="sr-only" aria-live="polite">{{ copied ? t('contact.copied') : '' }}</span>

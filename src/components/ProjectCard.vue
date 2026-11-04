@@ -10,7 +10,7 @@ const loc = useLoc()
 <template>
   <router-link
     :to="'/projets/' + project.slug"
-    class="group flex flex-col overflow-hidden rounded-xl border border-line bg-white transition hover:-translate-y-1 hover:shadow-lg"
+    class="group flex flex-col overflow-hidden rounded-xl border border-line bg-surface transition hover:-translate-y-1 hover:shadow-lg"
   >
     <img
       v-if="project.image"
@@ -27,7 +27,7 @@ const loc = useLoc()
     </div>
     <div class="flex flex-1 flex-col gap-2 p-5">
       <TypeBadge :type="project.type" class="self-start" />
-      <component :is="headingTag" class="text-xl font-bold group-hover:text-orange">{{ loc(project.title) }}</component>
+      <component :is="headingTag" class="text-xl font-bold group-hover:text-link">{{ loc(project.title) }}</component>
       <p class="text-[15px] text-muted">{{ loc(project.summary) }}</p>
       <ul class="mt-auto flex flex-wrap gap-1.5 pt-2" :aria-label="t('projects.tags')">
         <li v-for="tag in project.tags" :key="loc(tag)" class="rounded bg-mist px-2 py-0.5 text-xs font-medium">{{ loc(tag) }}</li>
