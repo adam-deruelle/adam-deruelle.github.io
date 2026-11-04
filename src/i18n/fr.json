@@ -103,8 +103,6 @@
     ],
     "floor": {
       "label": "Fond marin : contact",
-      "networks": "Réseaux",
-      "address": "Adresse",
       "backTop": "Remonter en haut de la page",
       "tip": "Remonter"
     }

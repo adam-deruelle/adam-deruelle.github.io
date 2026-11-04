@@ -103,8 +103,6 @@
     ],
     "floor": {
       "label": "Seabed: contact",
-      "networks": "Networks",
-      "address": "Location",
       "backTop": "Back to the top of the page",
       "tip": "Back up"
     }
