@@ -1,7 +1,9 @@
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/600.css';
+@import '@fontsource/space-grotesk/500.css';
 @import '@fontsource/space-grotesk/600.css';
 @import '@fontsource/space-grotesk/700.css';
 
@@ -10,94 +12,57 @@
 @tailwind utilities;
 
 @layer base {
-  /* Thème clair : palette Baltique */
+  /* Une seule ambiance : la mer. Les couleurs sont des rôles, utilisés par Tailwind (tailwind.config.js). */
   :root {
-    --c-page: 255 255 255;
-    --c-mist: 238 240 236;
-    --c-surface: 255 255 255;
-    --c-ink: 22 66 91;
-    --c-title: 22 66 91;
-    --c-muted: 74 95 108;
-    --c-line: 217 220 214;
-    --c-primary: 47 102 144;
-    --c-on-primary: 255 255 255;
-    --c-primary-hover: 22 66 91;
-    --c-link: 47 102 144;
-    --c-hl: 129 195 215;
-    --c-eyebrow: 47 102 144;
-    --c-tag: 230 238 242;
-    --c-band: 22 66 91;
-    --c-on-band: 255 255 255;
-    --c-band-accent: 129 195 215;
-    --c-band-btn: 129 195 215;
-    --c-on-band-btn: 22 66 91;
-    --c-pro: 22 66 91;
-    --c-on-pro: 255 255 255;
-    --c-perso: 129 195 215;
-    --c-on-perso: 22 66 91;
-    --c-cours: 217 220 214;
-    --c-on-cours: 22 66 91;
-    --i-bg: #E9F3F7;
-    --i-sun: #D9DCD6;
-    --i-water: #81C3D7;
-    --i-dark: #16425B;
-    --i-a: #3A7CA5;
-    --i-b: #81C3D7;
-    --i-light: #FFFFFF;
-    --i-joint: #2F6690;
-    color-scheme: light;
-  }
-  /* Thème sombre : palette Marine nuit */
-  html.dark {
-    --c-page: 0 0 34;
-    --c-mist: 0 18 66;
-    --c-surface: 4 22 63;
+    --c-page: 4 26 51;
+    --c-mist: 10 42 74;
+    --c-surface: 11 45 80;
     --c-ink: 230 238 246;
     --c-title: 255 255 255;
     --c-muted: 163 180 200;
-    --c-line: 28 45 90;
-    --c-primary: 0 148 198;
+    --c-line: 31 63 96;
+    --c-primary: 238 106 77;
     --c-on-primary: 0 0 34;
-    --c-primary-hover: 79 195 234;
-    --c-link: 63 182 227;
-    --c-hl: 0 148 198;
-    --c-eyebrow: 63 182 227;
-    --c-tag: 10 33 86;
-    --c-band: 4 15 22;
+    --c-primary-hover: 245 138 114;
+    --c-link: 238 106 77;
+    --c-hl: 63 182 227;
+    --c-eyebrow: 163 180 200;
+    --c-tag: 14 53 88;
+    --c-band: 2 12 28;
     --c-on-band: 255 255 255;
     --c-band-accent: 63 182 227;
-    --c-band-btn: 0 148 198;
+    --c-band-btn: 238 106 77;
     --c-on-band-btn: 0 0 34;
-    --c-pro: 0 148 198;
+    --c-pro: 238 106 77;
     --c-on-pro: 0 0 34;
-    --c-perso: 0 94 124;
-    --c-on-perso: 255 255 255;
-    --c-cours: 28 45 90;
+    --c-perso: 63 182 227;
+    --c-on-perso: 0 0 34;
+    --c-cours: 31 63 96;
     --c-on-cours: 230 238 246;
-    --i-bg: #001242;
-    --i-sun: #0094C6;
-    --i-water: #005E7C;
-    --i-dark: #040F16;
-    --i-a: #0094C6;
-    --i-b: #005E7C;
-    --i-light: #E6EEF6;
-    --i-joint: #3FB6E3;
+    --c-sky: 0 0 34;
     color-scheme: dark;
   }
-  html { scroll-padding-top: 5rem; }
+  html { scroll-padding-top: 5rem; scroll-behavior: smooth; }
   body { @apply bg-page text-ink; }
   h1, h2, h3 { @apply font-display text-title; text-wrap: balance; }
-  :focus-visible { outline: 3px solid rgb(var(--c-link)); outline-offset: 3px; border-radius: 4px; }
+  :focus-visible { outline: 3px solid #FFC857; outline-offset: 3px; border-radius: 2px; }
 }
 
 @layer components {
   .container-site { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
-  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg border-2 border-primary px-4 py-2 font-semibold text-title transition-colors hover:border-primary-hover hover:text-link; }
-  .btn-primary { @apply bg-primary text-on-primary hover:bg-primary-hover hover:text-on-primary; }
-  .eyebrow { @apply text-sm font-bold uppercase tracking-wider text-eyebrow; }
-  .placeholder { @apply grid place-items-center bg-mist text-sm font-semibold text-muted; background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgb(var(--c-tag)) 10px 20px); }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink/70 px-5 py-2 text-sm font-semibold uppercase tracking-wider text-title transition-colors hover:border-primary hover:text-link; }
+  .btn-primary { @apply border-primary bg-primary text-on-primary hover:border-primary-hover hover:bg-primary-hover hover:text-on-primary; }
+  .eyebrow { @apply font-mono text-xs font-semibold uppercase tracking-[0.18em] text-eyebrow; }
+  .placeholder { @apply grid place-items-center border border-line bg-mist font-mono text-xs font-semibold tracking-wider text-muted; }
 }
 
+/* La navbar posée sur le ciel de l'accueil : texte foncé */
+.on-sky { color: rgb(var(--c-sky)); }
+.on-sky .btn:not(.btn-primary) { color: rgb(var(--c-sky)); border-color: rgb(var(--c-sky) / 0.7); }
+.on-sky .border-line { border-color: rgb(var(--c-sky) / 0.3); }
+.on-sky .text-muted { color: #16425B; }
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }

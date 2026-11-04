@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-// Les couleurs sont des rôles ; leurs valeurs (clair = Baltique, sombre = Marine nuit)
-// sont définies dans src/assets/styles.css.
+// Les couleurs sont des rôles ; leurs valeurs (palette « mer ») sont dans src/assets/styles.css.
 export default {
-  darkMode: 'class',
   content: ['./index.html', './src/**/*.{vue,js}'],
   theme: {
     extend: {
@@ -31,11 +29,13 @@ export default {
         'perso': 'rgb(var(--c-perso) / <alpha-value>)',
         'on-perso': 'rgb(var(--c-on-perso) / <alpha-value>)',
         'cours': 'rgb(var(--c-cours) / <alpha-value>)',
-        'on-cours': 'rgb(var(--c-on-cours) / <alpha-value>)'
+        'on-cours': 'rgb(var(--c-on-cours) / <alpha-value>)',
+        'sky': 'rgb(var(--c-sky) / <alpha-value>)'
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif']
+        sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace']
       }
     }
   },

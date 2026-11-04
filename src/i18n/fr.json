@@ -54,10 +54,6 @@
       "Futur ingénieur robotique"
     ],
     "seeProjects": "Voir mes projets",
-    "cv": "Télécharger mon CV",
-    "discover": "Découvrir",
-    "scrollLabel": "Défiler vers la présentation",
-    "illuAlt": "Illustration : un automate, un bras robotisé et un voilier",
     "about": {
       "eyebrow": "À propos",
       "title": "De la maintenance industrielle à la robotique",
@@ -86,12 +82,31 @@
     "seek": {
       "eyebrow": "Je recherche",
       "title": "Une alternance en école d'ingénieur, en robotique ou mécatronique",
-      "items": [
-        "Cursus FISA",
-        "À partir de septembre 2027",
-        "Toute la France"
-      ],
       "cta": "Me contacter"
+    },
+    "boatAlt": "Voilier en bois à voile aurique, posé sur l'eau",
+    "imageSoon": "[IMAGE À VENIR]",
+    "read": "Lire la fiche",
+    "seekFacts": [
+      {
+        "k": "Cursus",
+        "v": "FISA"
+      },
+      {
+        "k": "Début",
+        "v": "Septembre 2027"
+      },
+      {
+        "k": "Lieu",
+        "v": "Toute la France"
+      }
+    ],
+    "floor": {
+      "label": "Fond marin : contact",
+      "networks": "Réseaux",
+      "address": "Adresse",
+      "backTop": "Remonter en haut de la page",
+      "tip": "Remonter"
     }
   },
   "projects": {
@@ -139,9 +154,5 @@
     "intro": "Auto-évaluations rédigées à la fin de ma 1ʳᵉ année de BUT GEII, reprises telles quelles de mon ancien site.",
     "level": "Niveau {n} sur 5",
     "onlyFr": ""
-  },
-  "theme": {
-    "toLight": "Passer au thème clair",
-    "toDark": "Passer au thème sombre"
   }
 }

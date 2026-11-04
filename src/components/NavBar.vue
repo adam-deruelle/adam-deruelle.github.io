@@ -1,9 +1,8 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import LangSwitch from './LangSwitch.vue'
-import ThemeSwitch from './ThemeSwitch.vue'
 import CvButton from './CvButton.vue'
 import { openContact } from '@/contact'
 
@@ -19,15 +18,19 @@ const links = [
 ]
 const isActive = (to) => (to === '/' ? route.path === '/' : route.path.startsWith(to))
 function contact() { open.value = false; openContact() }
+
+// Sur l'accueil, tant qu'on est dans le ciel, la barre est transparente avec un texte foncé.
+const scrollY = ref(0)
+const onScroll = () => { scrollY.value = window.scrollY }
+onMounted(() => { onScroll(); window.addEventListener('scroll', onScroll, { passive: true }) })
+onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
+const onSky = computed(() => route.name === 'home' && scrollY.value < 380 && !open.value)
 </script>
 
 <template>
-  <header class="fixed inset-x-0 top-0 z-40 border-b border-line bg-page/95 backdrop-blur">
+  <header class="fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300" :class="onSky ? 'on-sky border-transparent bg-transparent' : 'border-line bg-page/95 backdrop-blur'">
     <nav :aria-label="t('nav.main')" class="container-site flex h-16 items-center gap-2 sm:gap-4">
-      <router-link to="/" class="mr-auto flex items-center gap-2 font-display text-xl font-bold">
-        <span class="inline-block h-3 w-3 rotate-45 rounded-sm bg-hl" aria-hidden="true"></span>
-        Adam Deruelle
-      </router-link>
+      <router-link to="/" class="mr-auto font-display text-[15px] font-bold uppercase tracking-[0.14em]">Adam Deruelle</router-link>
 
       <!-- Bureau -->
       <ul class="hidden items-center gap-6 md:flex">
@@ -43,7 +46,6 @@ function contact() { open.value = false; openContact() }
       <button type="button" class="btn hidden md:inline-flex" @click="contact">{{ t('nav.contact') }}</button>
       <CvButton class="hidden md:inline-flex" />
       <LangSwitch />
-      <ThemeSwitch />
 
       <!-- Mobile -->
       <button
@@ -61,7 +63,7 @@ function contact() { open.value = false; openContact() }
       </button>
     </nav>
 
-    <div v-show="open" id="mobile-menu" class="border-t border-line bg-page md:hidden">
+    <div v-show="open" id="mobile-menu" class="border-t border-line bg-page text-ink md:hidden">
       <ul class="container-site flex flex-col gap-1 py-3">
         <li v-for="l in links" :key="l.to">
           <router-link :to="l.to" class="block rounded-md px-2 py-2.5 font-medium hover:bg-mist" :aria-current="isActive(l.to) ? 'page' : undefined">{{ t(l.key) }}</router-link>

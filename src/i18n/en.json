@@ -54,10 +54,6 @@
       "Future robotics engineer"
     ],
     "seeProjects": "See my projects",
-    "cv": "Download my resume",
-    "discover": "Discover",
-    "scrollLabel": "Scroll to the introduction",
-    "illuAlt": "Illustration: a PLC, a robot arm and a sailboat",
     "about": {
       "eyebrow": "About",
       "title": "From industrial maintenance to robotics",
@@ -86,12 +82,31 @@
     "seek": {
       "eyebrow": "Looking for",
       "title": "A work-study engineering degree in robotics or mechatronics",
-      "items": [
-        "Work-study (FISA) program",
-        "From September 2027",
-        "Anywhere in France"
-      ],
       "cta": "Get in touch"
+    },
+    "boatAlt": "Wooden gaff-rigged sailboat on the water",
+    "imageSoon": "[IMAGE COMING SOON]",
+    "read": "Read more",
+    "seekFacts": [
+      {
+        "k": "Program",
+        "v": "Work-study (FISA)"
+      },
+      {
+        "k": "Start",
+        "v": "September 2027"
+      },
+      {
+        "k": "Location",
+        "v": "Anywhere in France"
+      }
+    ],
+    "floor": {
+      "label": "Seabed: contact",
+      "networks": "Networks",
+      "address": "Location",
+      "backTop": "Back to the top of the page",
+      "tip": "Back up"
     }
   },
   "projects": {
@@ -139,9 +154,5 @@
     "intro": "Self-assessments written at the end of my first year of BUT GEII, kept as they were on my former website.",
     "level": "Level {n} out of 5",
     "onlyFr": "These texts are only available in French."
-  },
-  "theme": {
-    "toLight": "Switch to light theme",
-    "toDark": "Switch to dark theme"
   }
 }

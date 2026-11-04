@@ -2,12 +2,13 @@
 import { useI18n } from 'vue-i18n'
 import { site } from '@/data/site'
 import SocialIcon from './SocialIcon.vue'
+defineProps({ sand: { type: Boolean, default: false } })
 const { t } = useI18n()
 const year = new Date().getFullYear()
 </script>
 
 <template>
-  <footer class="border-t border-line bg-page">
+  <footer :class="sand ? 'bg-[#0D1B2B]' : 'border-t border-line bg-band'">
     <div class="container-site flex flex-col gap-6 py-8 text-sm text-muted md:flex-row md:items-end md:justify-between">
       <figure class="max-w-md">
         <blockquote class="italic" lang="fr">« {{ t('footer.quote') }} »</blockquote>
