@@ -92,22 +92,15 @@ const rays = [
       </div>
       <div class="horizon" aria-hidden="true"></div>
       <SailBoat class="boat" :label="t('home.boatAlt')" />
+        <svg class="surface" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+          <path class="back" d="M0 22 C150 10 260 30 420 20 S700 6 860 22 S1160 34 1300 18 S1400 14 1440 20 V70 H0Z" />
+          <path class="front" d="M0 34 C120 20 240 48 360 32 S600 16 720 32 S960 48 1080 30 S1320 16 1440 32 V70 H0Z" />
+          <path class="glint" d="M0 34 C120 20 240 48 360 32 S600 16 720 32 S960 48 1080 30 S1320 16 1440 32" />
+        </svg>
     </header>
 
     <!-- Mer -->
     <div class="sea">
-      <svg class="surface" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="under" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#5FB0D6" stop-opacity="0.9" />
-            <stop offset="1" stop-color="#2E7FAE" stop-opacity="1" />
-          </linearGradient>
-        </defs>
-        <path class="back" d="M0 30 C150 18 260 38 420 28 S700 14 860 30 S1160 42 1300 26 S1400 22 1440 28 V90 H0Z" />
-        <path d="M0 40 C120 26 240 54 360 38 S600 22 720 38 S960 54 1080 36 S1320 22 1440 38 V90 H0Z" fill="url(#under)" />
-        <path class="glint" d="M0 40 C120 26 240 54 360 38 S600 22 720 38 S960 54 1080 36 S1320 22 1440 38" />
-        <path class="glint2" d="M0 46 C120 34 240 60 360 45 S600 30 720 45 S960 60 1080 43 S1320 30 1440 45" />
-      </svg>
       <div class="rays" aria-hidden="true">
         <span v-for="(r, i) in rays" :key="i" class="ray" :style="{ left: r.l, width: r.w + 'px', transform: `rotate(${r.r}deg)` }"></span>
       </div>
@@ -245,8 +238,8 @@ const rays = [
 <style scoped>
 .page {
   --lane: 120px;
-  --sky: 540px;
-  --surface: #2e7fae;
+  --sky: 580px;
+  --surface: #3e93c0;
   position: relative;
   overflow: hidden;
 }
@@ -254,7 +247,7 @@ const rays = [
 .lanepad { padding-right: calc(var(--lane) + 1.5rem); }
 
 /* chaîne */
-.chain { position: absolute; left: 0; top: 0; width: 100%; pointer-events: none; z-index: 2; color: #c9d6e2; }
+.chain { position: absolute; left: 0; top: 0; width: 100%; pointer-events: none; z-index: 5; color: #c9d6e2; }
 
 /* ciel */
 .sky { position: relative; height: var(--sky); background: linear-gradient(to bottom, #7fbfd8, #d6ecf3); color: #000022; z-index: 1; }
@@ -270,14 +263,14 @@ const rays = [
 .boat { position: absolute; right: 6%; bottom: 6px; width: min(330px, 38vw); z-index: 3; }
 
 /* mer */
-.sea { position: relative; background: linear-gradient(to bottom, var(--surface) 0, #1a5f8a 7%, #0e3f66 22%, #082a4a 45%, #041a33 70%, #020c1c 100%); }
-.horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background: linear-gradient(to bottom, #4f9cc4, #3a8bbb 60%, #2e7fae); z-index: 2; }
+.sea { position: relative; background: linear-gradient(to bottom, var(--surface) 0, #2e7fae 2.5%, #1a5f8a 8%, #0e3f66 22%, #082a4a 45%, #041a33 70%, #020c1c 100%); }
+.horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 56px; background: linear-gradient(to bottom, #5aa6cf, #4a9cc8 50%, var(--surface)); z-index: 2; }
 .horizon::before { content: ''; position: absolute; inset: 14px 0 auto; height: 1px; background: rgba(255, 255, 255, 0.28); filter: blur(0.6px); }
-.surface { display: block; width: 100%; height: 90px; margin-top: -58px; position: relative; z-index: 4; pointer-events: none; }
-.surface .back { fill: rgba(46, 127, 174, 0.55); }
-.surface .glint { fill: none; stroke: rgba(255, 255, 255, 0.85); stroke-width: 2.5; }
-.surface .glint2 { fill: none; stroke: rgba(255, 255, 255, 0.25); stroke-width: 6; filter: blur(3px); }
-.rays { position: absolute; inset: 0 0 auto 0; height: 1300px; pointer-events: none; overflow: hidden; mix-blend-mode: screen; }
+.surface { position: absolute; left: 0; bottom: 0; display: block; width: 100%; height: 70px; z-index: 4; pointer-events: none; }
+.surface .back { fill: rgba(62, 147, 192, 0.55); }
+.surface .front { fill: var(--surface); }
+.surface .glint { fill: none; stroke: rgba(255, 255, 255, 0.8); stroke-width: 2; }
+.rays { position: absolute; inset: 0 0 auto 0; height: 1300px; pointer-events: none; overflow: hidden; mix-blend-mode: screen; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 90px); mask-image: linear-gradient(to bottom, transparent, #000 90px); }
 .ray { position: absolute; top: -60px; height: 100%; transform-origin: 50% 0; background: linear-gradient(to bottom, rgba(214, 236, 243, 0.42), rgba(214, 236, 243, 0.12) 45%, rgba(214, 236, 243, 0) 85%); filter: blur(10px); }
 .bubbles { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 .bubble { position: absolute; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.55); background: radial-gradient(circle at 32% 30%, rgba(255, 255, 255, 0.85) 0 14%, rgba(255, 255, 255, 0.12) 22%, rgba(180, 225, 245, 0.06) 60%, rgba(255, 255, 255, 0.25) 100%); }
