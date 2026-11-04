@@ -1,12 +1,15 @@
 <script setup>
 import { watchEffect } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import SiteFooter from './components/SiteFooter.vue'
 import ContactModal from './components/ContactModal.vue'
 
 const { t } = useI18n()
-watchEffect(() => { document.title = t('meta.title') })
+const route = useRoute()
+// Titre par défaut ; une fiche projet le remplace par le nom du projet.
+watchEffect(() => { route.fullPath; document.title = t('meta.title') })
 </script>
 
 <template>

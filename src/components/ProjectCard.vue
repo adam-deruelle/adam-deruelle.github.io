@@ -1,9 +1,10 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
-defineProps({ project: { type: Object, required: true } })
-const { t, locale } = useI18n()
-const loc = (v) => (v && typeof v === 'object' ? v[locale.value] ?? v.fr : v)
-const typeClass = { pro: 'bg-[#FBE3DC] text-[#8A2E07]', perso: 'bg-[#D7EFEC] text-[#1B6A60]', cours: 'bg-[#FFF0CC] text-[#6B4A00]' }
+import { useLoc } from '@/i18n/loc'
+import TypeBadge from './TypeBadge.vue'
+defineProps({ project: { type: Object, required: true }, headingTag: { type: String, default: 'h3' } })
+const { t } = useI18n()
+const loc = useLoc()
 </script>
 
 <template>
@@ -25,8 +26,8 @@ const typeClass = { pro: 'bg-[#FBE3DC] text-[#8A2E07]', perso: 'bg-[#D7EFEC] tex
       {{ loc(project.imagePlaceholder) || t('projects.imageSoon') }}
     </div>
     <div class="flex flex-1 flex-col gap-2 p-5">
-      <span class="self-start rounded-full px-2.5 py-0.5 text-xs font-bold" :class="typeClass[project.type]">{{ t('projects.types.' + project.type) }}</span>
-      <h3 class="text-xl font-bold group-hover:text-orange">{{ loc(project.title) }}</h3>
+      <TypeBadge :type="project.type" class="self-start" />
+      <component :is="headingTag" class="text-xl font-bold group-hover:text-orange">{{ loc(project.title) }}</component>
       <p class="text-[15px] text-muted">{{ loc(project.summary) }}</p>
       <ul class="mt-auto flex flex-wrap gap-1.5 pt-2" :aria-label="t('projects.tags')">
         <li v-for="tag in project.tags" :key="loc(tag)" class="rounded bg-mist px-2 py-0.5 text-xs font-medium">{{ loc(tag) }}</li>

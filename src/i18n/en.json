@@ -36,7 +36,6 @@
     "archive": "BUT skills archive",
     "rights": "Adam Deruelle"
   },
-  "wip": "[SECTION UNDER CONSTRUCTION]",
   "notFound": {
     "title": "Page not found",
     "back": "Back to home"
@@ -102,6 +101,43 @@
       "cours": "Coursework"
     },
     "tags": "Technologies",
-    "imageSoon": "[PHOTO COMING SOON]"
+    "imageSoon": "[PHOTO COMING SOON]",
+    "title": "Projects",
+    "intro": "Projects from work, coursework and my free time.",
+    "filterLabel": "Filter by type",
+    "all": "All",
+    "count": "{n} project | {n} projects"
+  },
+  "project": {
+    "back": "All projects",
+    "context": "Context",
+    "role": "What I did",
+    "tech": "Technical stack",
+    "results": "Results",
+    "credits": "Credits",
+    "images": "Images",
+    "github": "View the code on GitHub",
+    "notFound": "This project does not exist."
+  },
+  "parcours": {
+    "title": "Background",
+    "intro": "Education, work-study and goal.",
+    "timeline": "Timeline",
+    "see": "See the project",
+    "skills": "Skills by area",
+    "skillsIntro": "Each skill links to the projects where I used it.",
+    "usedIn": "Used in",
+    "kinds": {
+      "school": "Education",
+      "work": "Work",
+      "cert": "Certification",
+      "goal": "Goal"
+    }
+  },
+  "but": {
+    "title": "Archive: BUT skills",
+    "intro": "Self-assessments written at the end of my first year of BUT GEII, kept as they were on my former website.",
+    "level": "Level {n} out of 5",
+    "onlyFr": "These texts are only available in French."
   }
 }

@@ -36,7 +36,6 @@
     "archive": "Archive des compétences BUT",
     "rights": "Adam Deruelle"
   },
-  "wip": "[SECTION EN CONSTRUCTION]",
   "notFound": {
     "title": "Page introuvable",
     "back": "Retour à l'accueil"
@@ -102,6 +101,43 @@
       "cours": "Cours"
     },
     "tags": "Technologies",
-    "imageSoon": "[PHOTO À VENIR]"
+    "imageSoon": "[PHOTO À VENIR]",
+    "title": "Projets",
+    "intro": "Projets réalisés en entreprise, en cours et sur mon temps libre.",
+    "filterLabel": "Filtrer par type",
+    "all": "Tous",
+    "count": "{n} projet | {n} projets"
+  },
+  "project": {
+    "back": "Tous les projets",
+    "context": "Contexte",
+    "role": "Ce que j'ai fait",
+    "tech": "Technique",
+    "results": "Résultats",
+    "credits": "Crédits",
+    "images": "Images",
+    "github": "Voir le code sur GitHub",
+    "notFound": "Ce projet n'existe pas."
+  },
+  "parcours": {
+    "title": "Parcours",
+    "intro": "Formation, alternance et objectif.",
+    "timeline": "Frise chronologique",
+    "see": "Voir le projet",
+    "skills": "Compétences par domaine",
+    "skillsIntro": "Chaque compétence est liée aux projets où je l'ai mise en œuvre.",
+    "usedIn": "Mis en œuvre dans",
+    "kinds": {
+      "school": "Formation",
+      "work": "Entreprise",
+      "cert": "Habilitation",
+      "goal": "Objectif"
+    }
+  },
+  "but": {
+    "title": "Archive : compétences BUT",
+    "intro": "Auto-évaluations rédigées à la fin de ma 1ʳᵉ année de BUT GEII, reprises telles quelles de mon ancien site.",
+    "level": "Niveau {n} sur 5",
+    "onlyFr": ""
   }
 }
