@@ -12,7 +12,8 @@
 //   image       image de la carte (WebP dans public/images/projets/<slug>/) ; null = placeholder
 //   imageAlt, imagePlaceholder (texte du placeholder, facultatif)
 //   github      lien du dépôt ; null = pas de lien
-//   details     contenu de la fiche : intro, role[], tech[], results[], table, credits, gallery[]
+//   details     contenu de la fiche : intro, role[], tech[], results[], table, credits[], gallery[]
+//               credits = [{ name, role: { fr, en } }] (role facultatif)
 
 export const TYPES = ['pro', 'perso', 'cours']
 
@@ -76,10 +77,10 @@ export const projects = [
           'The kinematic model powers the Talos Studio software: forward and inverse kinematics, saved poses, gesture recording and replay, block-based sequencer, web console, phone control.'
         ]
       },
-      credits: {
-        fr: 'Vision, architecture et modèle cinématique : Adam Deruelle. Logiciel de contrôle Talos Studio : Harry Troule, développé avec Claude Code.',
-        en: 'Vision, architecture and kinematic model: Adam Deruelle. Talos Studio control software: Harry Troule, developed with Claude Code.'
-      },
+      credits: [
+        { name: 'Adam Deruelle', role: { fr: 'Vision, architecture et roadmap · modèle cinématique du bras', en: 'Vision, architecture and roadmap · kinematic model of the arm' } },
+        { name: 'Harry Troule', role: { fr: 'Logiciel de contrôle Talos Studio, développé avec Claude Code', en: 'Talos Studio control software, developed with Claude Code' } }
+      ],
       gallery: [{ src: null, placeholder: { fr: '[VIDÉO DU BRAS À VENIR]', en: '[ARM VIDEO COMING SOON]' } }]
     }
   },
@@ -271,7 +272,7 @@ export const projects = [
         fr: ['En développement : tutoriel (~5 min) visé pour la JPO de février 2027.'],
         en: ['In development: tutorial (~5 min) targeted for the February 2027 open day.']
       },
-      credits: { fr: 'Équipe : Adam Deruelle, Lucas, Baptiste, Ewen.', en: 'Team: Adam Deruelle, Lucas, Baptiste, Ewen.' },
+      credits: [{ name: 'Adam Deruelle' }, { name: 'Lucas' }, { name: 'Baptiste' }, { name: 'Ewen' }],
       gallery: [{ src: null, placeholder: { fr: '[CAPTURE DU CASQUE À VENIR]', en: '[HEADSET SCREENSHOT COMING SOON]' } }]
     }
   },

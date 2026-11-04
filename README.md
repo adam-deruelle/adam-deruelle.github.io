@@ -53,7 +53,10 @@ Un contenu manquant s'affiche en placeholder visible (`[PHOTO À VENIR]`) : rien
     role:    { fr: ['Ce que j\'ai fait…'], en: ['What I did…'] },
     tech:    ['Raspberry Pi Pico', 'CircuitPython'],
     results: { fr: ['Résultat…'], en: ['Result…'] },   // ou null
-    credits: { fr: 'Équipe…', en: 'Team…' },          // facultatif
+    credits: [                                        // facultatif
+      { name: 'Adam Deruelle', role: { fr: 'Ce que j\'ai fait', en: 'What I did' } },
+      { name: 'Coéquipier' }                          // role facultatif
+    ],
     table:   null,                                    // facultatif (voir Talos)
     gallery: [
       { src: '/images/projets/mon-projet/carte.webp', alt: { fr: '…', en: '…' } },

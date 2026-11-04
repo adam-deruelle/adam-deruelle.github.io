@@ -12,6 +12,7 @@ const { t } = useI18n()
 const loc = useLoc()
 const p = computed(() => getProject(props.slug))
 const d = computed(() => p.value?.details ?? {})
+const initials = (name) => name.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase()
 
 watchEffect(() => {
   if (p.value) document.title = `${loc(p.value.title)} · Adam Deruelle`
@@ -95,7 +96,15 @@ watchEffect(() => {
         </section>
         <section v-if="d.credits">
           <h2 class="text-sm font-bold uppercase tracking-wider text-muted">{{ t('project.credits') }}</h2>
-          <p class="mt-2 text-sm">{{ loc(d.credits) }}</p>
+          <ul class="mt-3 space-y-3">
+            <li v-for="c in d.credits" :key="c.name" class="flex gap-3" :class="c.role ? 'items-start' : 'items-center'">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-mist text-xs font-bold text-title" aria-hidden="true">{{ initials(c.name) }}</span>
+              <div class="min-w-0 text-sm">
+                <p class="font-semibold text-title">{{ c.name }}</p>
+                <p v-if="c.role" class="text-muted">{{ loc(c.role) }}</p>
+              </div>
+            </li>
+          </ul>
         </section>
       </aside>
     </article>
