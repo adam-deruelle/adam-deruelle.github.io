@@ -1,6 +1,6 @@
 <script setup>
-// Rocher sous-marin : pierre calcaire poreuse (texture procédurale SVG, éclairée par le haut),
-// quelques taches d'algues, et un contenu « gravé » dans la pierre.
+// Rocher sous-marin : pierre poreuse (texture procédurale SVG, éclairée par le haut) avec des taches d'algues.
+// Le texte est gravé : la taille met à nu une pierre plus claire, le bord haut du sillon est dans l'ombre.
 import { useId } from 'vue'
 
 const props = defineProps({
@@ -22,22 +22,22 @@ const box = { 1: '0 0 340 220', 2: '0 0 256 162' }
     <svg class="shape" :viewBox="box[props.shape]" preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <linearGradient :id="'g' + uid" x1="0" y1="0" x2="0.25" y2="1">
-          <stop offset="0" stop-color="#ECE9DA" />
-          <stop offset="0.5" stop-color="#C9CAB9" />
-          <stop offset="1" stop-color="#7A8783" />
+          <stop offset="0" stop-color="#C9CDB8" />
+          <stop offset="0.45" stop-color="#99A592" />
+          <stop offset="1" stop-color="#4C5E5A" />
         </linearGradient>
         <filter :id="'f' + uid" x="-2%" y="-2%" width="104%" height="104%" color-interpolation-filters="sRGB">
           <!-- relief : bosses + grain fin -->
-          <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="4" :seed="props.seed" result="lumps" />
-          <feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="3" :seed="props.seed + 7" result="grain" />
-          <feComposite in="lumps" in2="grain" operator="arithmetic" k2="0.8" k3="0.35" result="bump" />
-          <feDiffuseLighting in="bump" surfaceScale="3.5" lighting-color="#F2EEDC" result="lit">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="4" :seed="props.seed" result="lumps" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" :seed="props.seed + 7" result="grain" />
+          <feComposite in="lumps" in2="grain" operator="arithmetic" k2="0.75" k3="0.45" result="bump" />
+          <feDiffuseLighting in="bump" surfaceScale="7" lighting-color="#F2EEDC" result="lit">
             <feDistantLight azimuth="255" elevation="52" />
           </feDiffuseLighting>
           <feComposite in="lit" in2="SourceGraphic" operator="arithmetic" k1="1.25" result="tex" />
           <!-- taches d'algues -->
           <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" :seed="props.seed + 21" result="moss" />
-          <feColorMatrix in="moss" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.56  0 0 0 0 0.42  0 0 0 6 -4.2" result="mossA" />
+          <feColorMatrix in="moss" type="matrix" values="0 0 0 0 0.24  0 0 0 0 0.36  0 0 0 0 0.2  0 0 0 9 -4.6" result="mossA" />
           <feComposite in="mossA" in2="tex" operator="atop" result="mossy" />
           <feBlend in="mossy" in2="tex" mode="multiply" result="all" />
           <feComposite in="all" in2="SourceGraphic" operator="in" />
@@ -51,7 +51,7 @@ const box = { 1: '0 0 340 220', 2: '0 0 256 162' }
 
 <style scoped>
 .stone { position: relative; }
-.shape { position: absolute; inset: 0; width: 100%; height: 100%; filter: saturate(0.75); }
+.shape { position: absolute; inset: 0; width: 100%; height: 100%;  }
 .carved {
   position: absolute;
   display: flex;
@@ -60,12 +60,12 @@ const box = { 1: '0 0 340 220', 2: '0 0 256 162' }
   align-items: center;
   text-align: center;
   font-family: 'Cinzel', 'Times New Roman', serif;
-  color: #23261d;
+  color: #ECE6D0;
   /* gravure : lèvre basse éclairée, bord haut dans l'ombre */
-  text-shadow: 0 1px 0 rgba(255, 252, 235, 0.55), 0 2px 1px rgba(255, 252, 235, 0.2), 0 -1px 0 rgba(0, 0, 0, 0.6);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75), 0 -2px 1px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 240, 0.25);
 }
-.carved :deep(h3) { font: 700 clamp(13px, 1.5vw, 17px) 'Cinzel', serif; letter-spacing: 0.22em; color: #0f120c; text-transform: uppercase; }
-.carved :deep(a), .carved :deep(p) { display: block; margin-top: 2px; line-height: 1.35; font: 700 clamp(11.5px, 1.35vw, 16px) 'Cinzel', serif; letter-spacing: 0.04em; text-decoration: none; overflow-wrap: anywhere; color: #0f120c; }
-.carved :deep(a:hover) { text-decoration: underline; text-underline-offset: 3px; color: #000; }
-.carved :deep(.sep) { width: 46px; height: 2px; margin: 4px auto 2px; background: rgba(0, 0, 0, 0.5); box-shadow: 0 1px 0 rgba(255, 252, 235, 0.5); }
+.carved :deep(h3) { font: 700 clamp(13px, 1.5vw, 17px) 'Cinzel', serif; letter-spacing: 0.22em; color: #ECE6D0; text-transform: uppercase; }
+.carved :deep(a), .carved :deep(p) { display: block; margin-top: 2px; line-height: 1.35; font: 700 clamp(11.5px, 1.35vw, 16px) 'Cinzel', serif; letter-spacing: 0.04em; text-decoration: none; overflow-wrap: anywhere; color: #ECE6D0; }
+.carved :deep(a:hover) { text-decoration: underline; text-underline-offset: 3px; color: #fff; }
+.carved :deep(.sep) { width: 46px; height: 2px; margin: 4px auto 2px; background: #ECE6D0; box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75); }
 </style>
