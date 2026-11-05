@@ -48,7 +48,7 @@ export const timeline = [
     period: null,
     title: { fr: 'Habilitations', en: 'Certifications' },
     place: null,
-    placeholder: { fr: '[HABILITATIONS À PRÉCISER]', en: '[CERTIFICATIONS TO BE ADDED]' }
+    points: { fr: ['H0V, BR, BC, B2V'], en: ['French electrical habilitations H0V, BR, BC, B2V'] }
   },
   {
     kind: 'goal',
