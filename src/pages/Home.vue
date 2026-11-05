@@ -166,7 +166,7 @@ const rays = [
       </section>
 
       <div class="lanepad container-site">
-        <img v-if="site.home.transitions[1]" :src="site.home.transitions[1]" alt="" class="transition-img" loading="lazy" />
+        <img v-if="site.home.transitions[1]" :src="site.home.transitions[1]" alt="" class="transition-img illus" width="1568" height="392" loading="lazy" />
         <div v-else class="transition-ph">{{ t('home.imageSoon') }}</div>
       </div>
 
@@ -195,7 +195,7 @@ const rays = [
       </section>
 
       <div class="lanepad container-site">
-        <img v-if="site.home.transitions[2]" :src="site.home.transitions[2]" alt="" class="transition-img" loading="lazy" />
+        <img v-if="site.home.transitions[2]" :src="site.home.transitions[2]" alt="" class="transition-img illus" width="1568" height="392" loading="lazy" />
         <div v-else class="transition-ph">{{ t('home.imageSoon') }}</div>
       </div>
 
@@ -310,6 +310,8 @@ const rays = [
 
 .transition-ph { height: clamp(150px, 20vw, 240px); border: 1px solid rgba(230, 238, 246, 0.28); display: grid; place-items: center; font: 600 12px 'IBM Plex Mono', monospace; letter-spacing: 0.08em; color: #a3b4c8; background: rgba(0, 0, 34, 0.18); position: relative; z-index: 2; }
 .transition-img { width: 100%; height: clamp(150px, 20vw, 240px); object-fit: cover; position: relative; z-index: 2; }
+/* bandeaux illustrés (format 4:1) : affichés en entier à toutes les largeurs, sans recadrage */
+.transition-img.illus { height: auto; aspect-ratio: 1568 / 392; object-fit: contain; }
 
 .sec { position: relative; z-index: 2; padding-block: 80px; }
 .label { font: 600 12px 'IBM Plex Mono', monospace; letter-spacing: 0.18em; text-transform: uppercase; color: #a3b4c8; display: flex; align-items: center; gap: 14px; }
