@@ -4,6 +4,7 @@ export const site = {
   linkedin: 'https://www.linkedin.com/in/adam-deruelle-',
   github: 'https://github.com/adam-deruelle',
   location: 'Bruz (35170)',
+  photo: '/images/profil.webp', // photo de profil (accueil, section À propos)
   // CV une colonne, choisi selon la langue du site (fichiers dans public/cv/)
   cv: {
     fr: '/cv/CV_Adam_Deruelle_FR.pdf',

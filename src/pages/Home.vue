@@ -14,6 +14,9 @@ const loc = useLoc()
 const list = (key) => tm(key).map((m) => rt(m))
 const pairs = (key) => tm(key).map((f) => ({ k: rt(f.k), v: rt(f.v) }))
 
+// Photo de profil (public/images/profil.webp) ; tant qu'elle manque, un rond « photo à venir »
+const photoMissing = ref(!site.photo)
+
 const page = ref(null)
 const chain = ref(null)
 useAnchorChain(page, chain)
@@ -142,13 +145,17 @@ const rays = [
       <!-- À propos -->
       <section class="sec" aria-labelledby="about-title">
         <div class="lanepad container-site about">
-          <div>
+          <div class="about-photo">
+            <img v-if="!photoMissing" :src="site.photo" :alt="t('home.photoAlt')" width="160" height="160" loading="lazy" decoding="async" @error="photoMissing = true" />
+            <span v-else class="photo-ph">{{ t('home.photoSoon') }}</span>
+          </div>
+          <div class="about-text">
             <p class="label">{{ t('home.about.eyebrow') }}</p>
             <h2 id="about-title">{{ t('home.about.title') }}</h2>
             <p class="mt-5 max-w-prose">{{ t('home.about.p1') }}</p>
             <p class="mt-4 max-w-prose">{{ t('home.about.p2') }}</p>
           </div>
-          <dl>
+          <dl class="about-facts">
             <div v-for="f in pairs('home.about.facts')" :key="f.k">
               <dt>{{ f.k }}</dt>
               <dd>{{ f.v }}</dd>
@@ -309,7 +316,12 @@ const rays = [
 .label::after { content: ''; height: 1px; background: rgba(230, 238, 246, 0.28); flex: 1; max-width: 220px; }
 h2 { font-size: clamp(28px, 3.8vw, 46px); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 14px; line-height: 1.08; }
 
-.about { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.about { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); grid-template-areas: 'text photo' 'text facts'; grid-template-rows: auto 1fr; column-gap: 48px; row-gap: 28px; align-items: start; }
+.about-text { grid-area: text; }
+.about-photo { grid-area: photo; padding-left: 24px; }
+.about-facts { grid-area: facts; }
+.about-photo img, .photo-ph { display: block; width: 160px; height: 160px; border-radius: 50%; border: 3px solid #ee6a4d; object-fit: cover; }
+.photo-ph { display: grid; place-items: center; padding: 16px; text-align: center; background: rgba(0, 0, 34, 0.25); font: 600 11px 'IBM Plex Mono', monospace; letter-spacing: 0.06em; color: #a3b4c8; }
 .about dl { margin: 0; border-left: 1px solid rgba(230, 238, 246, 0.28); padding-left: 24px; display: grid; gap: 18px; }
 dt { font: 600 11px 'IBM Plex Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase; color: #a3b4c8; }
 dd { margin: 4px 0 0; font-weight: 500; }
@@ -353,6 +365,8 @@ dd { margin: 4px 0 0; font-weight: 500; }
   .lanepad { padding-right: calc(var(--lane) + 1rem); }
   .hero-copy { padding-top: 104px; }
   .about, .stop { grid-template-columns: 1fr; gap: 22px; }
+  .about { grid-template-areas: 'photo' 'text' 'facts'; grid-template-rows: auto; }
+  .about-photo { padding-left: 0; justify-self: center; }
   .stop.r .img { order: 0; }
   .timeline { gap: 64px; }
   .boat { width: min(230px, 55vw); right: 4%; }
