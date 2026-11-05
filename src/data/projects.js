@@ -220,7 +220,7 @@ export const projects = [
     image: '/images/projets/console/implantation.webp',
     imageFit: 'contain',
     imageAlt: { fr: "Schéma d'implantation de la carte de la console sous Proteus", en: 'Console board component layout in Proteus' },
-    github: null,
+    github: 'https://github.com/adam-deruelle/pico-retro-handheld',
     details: {
       intro: {
         fr: "Conception et fabrication d'une console de jeu portable, de la carte électronique jusqu'aux jeux.",
