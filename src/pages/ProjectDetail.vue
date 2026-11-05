@@ -78,7 +78,7 @@ watchEffect(() => {
         <section v-if="d.gallery?.length">
           <h2 class="text-2xl font-bold">{{ t('project.images') }}</h2>
           <div class="mt-4 grid gap-4 sm:grid-cols-2">
-            <figure v-for="(g, i) in d.gallery" :key="i">
+            <figure v-for="(g, i) in d.gallery" :key="i" :class="{ 'sm:col-span-2': g.wide }">
               <img
                 v-if="g.src"
                 :src="g.src"
@@ -88,7 +88,7 @@ watchEffect(() => {
                 width="1200"
                 height="900"
                 class="w-full rounded-xl"
-                :class="[g.tall ? 'aspect-[3/4]' : 'aspect-[4/3]', g.fit === 'contain' ? 'bg-mist object-contain p-4' : 'object-cover']"
+                :class="[g.wide ? 'h-auto' : g.tall ? 'aspect-[3/4]' : 'aspect-[4/3]', g.fit === 'contain' ? 'bg-mist object-contain p-4' : 'object-cover', { '[image-rendering:pixelated]': g.pixel }]"
               />
               <div v-else class="placeholder aspect-[4/3] w-full rounded-xl px-4 text-center">{{ loc(g.placeholder) }}</div>
               <figcaption v-if="g.src && g.alt" class="mt-2 text-sm text-muted">{{ loc(g.alt) }}</figcaption>

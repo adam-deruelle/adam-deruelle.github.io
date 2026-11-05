@@ -13,7 +13,8 @@
 //   imageAlt, imagePlaceholder (texte du placeholder, facultatif)
 //   imageFit    'contain' pour afficher l'image en entier (rendu détouré) ; sinon recadrée
 //   imagePosition  point de cadrage, ex. '50% 20%' (facultatif)
-//   gallery[]   { src, alt } ; options : fit: 'contain', tall: true (photo verticale)
+//   gallery[]   { src, alt } ; options : fit: 'contain', tall: true (photo verticale),
+//               wide: true (sur toute la largeur), pixel: true (pixel art, sans lissage)
 //   github      lien du dépôt ; null = pas de lien
 //   details     contenu de la fiche : intro, role[], tech[], results[], table, credits[], gallery[]
 //               credits = [{ name, role: { fr, en } }] (role facultatif)
@@ -214,10 +215,11 @@ export const projects = [
       fr: 'PCB conçu sous Proteus, gravé, soudé et mis en boîtier 3D, avec 3 jeux en CircuitPython.',
       en: 'PCB designed in Proteus, etched, soldered and fitted in a 3D-printed case, with 3 games in CircuitPython.'
     },
-    context: { fr: 'SAÉ 2, BUT GEII, 2024-25', en: 'SAÉ 2 (university project), BUT GEII, 2024-25' },
+    context: { fr: 'SAÉ 2, BUT GEII, nov. 2024 – janv. 2025', en: 'SAÉ 2 (university project), BUT GEII, Nov. 2024 – Jan. 2025' },
     tags: ['Proteus', 'Raspberry Pi Pico', 'ST7735', 'CircuitPython'],
-    image: null,
-    imageAlt: { fr: 'Console de jeu portable', en: 'Handheld game console' },
+    image: '/images/projets/console/implantation.webp',
+    imageFit: 'contain',
+    imageAlt: { fr: "Schéma d'implantation de la carte de la console sous Proteus", en: 'Console board component layout in Proteus' },
     github: null,
     details: {
       intro: {
@@ -226,21 +228,28 @@ export const projects = [
       },
       role: {
         fr: [
-          'Conception du PCB sous Proteus : Raspberry Pi Pico, écran ST7735, croix directionnelle, haut-parleur.',
+          'Conception du PCB sous Proteus : Raspberry Pi Pico, écran TFT ST7735S 1,8″ (128 × 160), croix directionnelle, joystick, haut-parleur et réglage du volume.',
           'Fabrication : gravure et soudure de la carte, boîtier imprimé en 3D.',
-          'Programmation de 3 jeux en CircuitPython. Les graphismes et les modules ont été fournis par l\'équipe pédagogique ; le code des jeux est le mien.'
+          'Programmation de 3 jeux en CircuitPython : Christmas Pong, Gunfight et Space Rescue. Les graphismes et les modules ont été fournis par l\'équipe pédagogique ; le code des jeux est le mien.'
         ],
         en: [
-          'PCB design in Proteus: Raspberry Pi Pico, ST7735 screen, directional pad, speaker.',
+          'PCB design in Proteus: Raspberry Pi Pico, 1.8″ ST7735S TFT screen (128 × 160), directional pad, joystick, speaker and volume control.',
           'Manufacturing: etching and soldering the board, 3D-printed case.',
-          'Programming 3 games in CircuitPython. Graphics and modules were provided by the teaching staff; the game code is mine.'
+          'Programming 3 games in CircuitPython: Christmas Pong, Gunfight and Space Rescue. Graphics and modules were provided by the teaching staff; the game code is mine.'
         ]
       },
       tech: ['Proteus', 'Raspberry Pi Pico', { fr: 'Écran ST7735', en: 'ST7735 screen' }, 'CircuitPython', { fr: 'Impression 3D', en: '3D printing' }],
-      results: null,
+      results: {
+        fr: ['Projet mené du 4 novembre 2024 au 24 janvier 2025, de la rétro-ingénierie et du schéma sous Proteus jusqu\'à la carte soudée, aux jeux, au boîtier imprimé et au bilan technique oral.'],
+        en: ['Project run from 4 November 2024 to 24 January 2025, from reverse engineering and the Proteus schematic to the soldered board, the games, the printed case and the final technical review.']
+      },
       gallery: [
-        { src: null, placeholder: { fr: '[ROUTAGE DU PCB À VENIR]', en: '[PCB LAYOUT COMING SOON]' } },
-        { src: null, placeholder: { fr: '[PHOTO DE LA CONSOLE À VENIR]', en: '[CONSOLE PHOTO COMING SOON]' } }
+        { src: '/images/projets/console/implantation.webp', fit: 'contain', wide: true, alt: { fr: "Schéma d'implantation de la carte (Proteus)", en: 'Board component layout (Proteus)' } },
+        { src: '/images/projets/console/christmas-pong.webp', fit: 'contain', pixel: true, alt: { fr: "Écran titre de Christmas Pong", en: 'Christmas Pong title screen' } },
+        { src: '/images/projets/console/gunfight.webp', fit: 'contain', pixel: true, alt: { fr: 'Écran titre de Gunfight', en: 'Gunfight title screen' } },
+        { src: '/images/projets/console/space-rescue.webp', fit: 'contain', pixel: true, alt: { fr: 'Écran titre de Space Rescue', en: 'Space Rescue title screen' } },
+        { src: null, placeholder: { fr: '[PHOTO DE LA CONSOLE À VENIR]', en: '[CONSOLE PHOTO COMING SOON]' } },
+        { src: '/images/projets/console/planning.webp', fit: 'contain', wide: true, alt: { fr: 'Planning du projet (diagramme de Gantt)', en: 'Project schedule (Gantt chart)' } }
       ]
     }
   },
