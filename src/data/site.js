@@ -12,7 +12,9 @@ export const site = {
   },
   // Images de l'accueil (WebP dans public/images/accueil/) ; null = cadre « image à venir »
   home: {
-    transitions: ['/images/accueil/transition-1.webp', '/images/accueil/transition-2.webp', '/images/accueil/transition-3.webp'], // sous la surface · à propos → projets · projets → recherche
-    seabed: null
-  }
+    transitions: ['/images/accueil/transition-1.webp', '/images/accueil/transition-2.webp', '/images/accueil/transition-3.webp'] // sous la surface · à propos → projets · projets → recherche
+  },
+  // Carte « En ce moment j'écoute » (accueil) : pour changer de musique, modifier ces 3 lignes.
+  // spotifyId = la fin du lien de partage du titre (open.spotify.com/track/<spotifyId>)
+  nowPlaying: { title: 'TACTIC', artist: 'Daoko', spotifyId: '2afdDEOkeioSUIwIpx2MPv' }
 }

@@ -8,6 +8,7 @@ import { useLoc } from '@/i18n/loc'
 import { useAnchorChain } from '@/composables/useAnchorChain'
 import SailBoat from '@/components/home/SailBoat.vue'
 import StoneRock from '@/components/home/StoneRock.vue'
+import NowPlaying from '@/components/home/NowPlaying.vue'
 
 const { t, tm, rt } = useI18n()
 const loc = useLoc()
@@ -216,8 +217,7 @@ const rays = [
       <!-- Fond marin -->
       <section class="floor" :aria-label="t('home.floor.label')">
         <div class="lanepad container-site">
-          <img v-if="site.home.seabed" :src="site.home.seabed" alt="" class="seabed-img" loading="lazy" />
-          <div v-else class="transition-ph seabed-ph">{{ t('home.imageSoon') }}</div>
+          <NowPlaying class="now-playing" />
         </div>
         <div class="container-site">
           <div class="bed">
@@ -343,8 +343,7 @@ dd { margin: 4px 0 0; font-weight: 500; }
 
 /* fond marin */
 .floor { position: relative; z-index: 2; padding-top: 100px; }
-.seabed-ph, .seabed-img { height: 120px; margin-bottom: 60px; }
-.seabed-img { width: 100%; object-fit: cover; }
+.now-playing { margin-bottom: 60px; }
 .bed { position: relative; height: 200px; }
 .sand { position: absolute; left: -100vw; right: -100vw; bottom: 0; height: 90px; background: #0d1b2b; clip-path: polygon(0 40%, 8% 30%, 18% 38%, 30% 26%, 44% 36%, 58% 24%, 70% 34%, 84% 22%, 100% 32%, 100% 100%, 0 100%); }
 .rock { position: absolute; bottom: 34px; z-index: 1; }

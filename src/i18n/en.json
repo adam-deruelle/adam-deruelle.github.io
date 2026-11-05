@@ -152,5 +152,13 @@
     "intro": "Self-assessments written at the end of my first year of BUT GEII, kept as they were on my former website.",
     "level": "Level {n} out of 5",
     "onlyFr": "These texts are only available in French."
+  },
+  "nowPlaying": {
+    "label": "Now playing",
+    "listen": "Listen to {title} by {artist}",
+    "pause": "Pause {title}",
+    "preview": "30-second preview without a Spotify account",
+    "error": "The Spotify player could not load.",
+    "open": "Listen on Spotify"
   }
 }

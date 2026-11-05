@@ -152,5 +152,13 @@
     "intro": "Auto-évaluations rédigées à la fin de ma 1ʳᵉ année de BUT GEII, reprises telles quelles de mon ancien site.",
     "level": "Niveau {n} sur 5",
     "onlyFr": ""
+  },
+  "nowPlaying": {
+    "label": "En ce moment j'écoute",
+    "listen": "Écouter {title} de {artist}",
+    "pause": "Mettre {title} en pause",
+    "preview": "Extrait de 30 s sans compte Spotify",
+    "error": "Le lecteur Spotify n'a pas pu se charger.",
+    "open": "Écouter sur Spotify"
   }
 }

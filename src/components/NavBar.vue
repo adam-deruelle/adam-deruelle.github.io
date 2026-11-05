@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import LangSwitch from './LangSwitch.vue'
 import CvButton from './CvButton.vue'
+import CompassLogo from './CompassLogo.vue'
 import { openContact } from '@/contact'
 
 const { t } = useI18n()
@@ -30,7 +31,7 @@ const onSky = computed(() => route.name === 'home' && scrollY.value < 380 && !op
 <template>
   <header class="fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300" :class="onSky ? 'on-sky border-transparent bg-transparent' : 'border-line bg-page/95 backdrop-blur'">
     <nav :aria-label="t('nav.main')" class="container-site flex h-16 items-center gap-2 sm:gap-4">
-      <router-link to="/" class="mr-auto font-display text-[15px] font-bold uppercase tracking-[0.14em]">Adam Deruelle</router-link>
+      <router-link to="/" class="mr-auto flex items-center gap-2.5 font-display text-[15px] font-bold uppercase tracking-[0.14em]"><CompassLogo class="h-7 w-7 shrink-0" />Adam Deruelle</router-link>
 
       <!-- Bureau -->
       <ul class="hidden items-center gap-6 md:flex">
