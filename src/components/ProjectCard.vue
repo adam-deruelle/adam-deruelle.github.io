@@ -20,7 +20,9 @@ const loc = useLoc()
       decoding="async"
       width="1200"
       height="750"
-      class="aspect-[16/10] w-full object-cover"
+      class="aspect-[16/10] w-full"
+      :class="project.imageFit === 'contain' ? 'bg-mist object-contain p-3' : 'object-cover'"
+      :style="project.imagePosition ? { objectPosition: project.imagePosition } : null"
     />
     <div v-else class="placeholder aspect-[16/10] w-full px-4 text-center">
       {{ loc(project.imagePlaceholder) || t('projects.imageSoon') }}

@@ -11,6 +11,9 @@
 //   title, summary, context (ligne sous le titre), tags
 //   image       image de la carte (WebP dans public/images/projets/<slug>/) ; null = placeholder
 //   imageAlt, imagePlaceholder (texte du placeholder, facultatif)
+//   imageFit    'contain' pour afficher l'image en entier (rendu détouré) ; sinon recadrée
+//   imagePosition  point de cadrage, ex. '50% 20%' (facultatif)
+//   gallery[]   { src, alt } ; options : fit: 'contain', tall: true (photo verticale)
 //   github      lien du dépôt ; null = pas de lien
 //   details     contenu de la fiche : intro, role[], tech[], results[], table, credits[], gallery[]
 //               credits = [{ name, role: { fr, en } }] (role facultatif)
@@ -29,8 +32,9 @@ export const projects = [
     },
     context: { fr: 'Projet personnel · Phase 1 en cours', en: 'Personal project · Phase 1 in progress' },
     tags: ['xArm 1S', 'Denavit–Hartenberg', 'Python', { fr: 'Architecture modulaire', en: 'Modular architecture' }],
-    image: null,
-    imageAlt: { fr: 'Bras robotisé xArm 1S du projet Talos', en: 'xArm 1S robot arm from the Talos project' },
+    image: '/images/projets/talos/xarm.webp',
+    imageFit: 'contain', // rendu détouré : affiché en entier
+    imageAlt: { fr: 'Bras robotisé Hiwonder xArm 1S utilisé dans Talos', en: 'Hiwonder xArm 1S robot arm used in Talos' },
     github: 'https://github.com/adam-deruelle/Talos',
     details: {
       intro: {
@@ -81,7 +85,10 @@ export const projects = [
         { name: 'Adam Deruelle', role: { fr: 'Vision, architecture et roadmap · modèle cinématique du bras', en: 'Vision, architecture and roadmap · kinematic model of the arm' } },
         { name: 'Harry Troule', role: { fr: 'Logiciel de contrôle Talos Studio, développé avec Claude Code', en: 'Talos Studio control software, developed with Claude Code' } }
       ],
-      gallery: [{ src: null, placeholder: { fr: '[VIDÉO DU BRAS À VENIR]', en: '[ARM VIDEO COMING SOON]' } }]
+      gallery: [
+        { src: '/images/projets/talos/xarm.webp', fit: 'contain', alt: { fr: 'Le bras Hiwonder xArm 1S', en: 'The Hiwonder xArm 1S arm' } },
+        { src: null, placeholder: { fr: '[VIDÉO DU BRAS À VENIR]', en: '[ARM VIDEO COMING SOON]' } }
+      ]
     }
   },
   {
@@ -95,8 +102,9 @@ export const projects = [
     },
     context: { fr: 'Alternance · Groupe Rocher, service maintenance', en: 'Work-study · Groupe Rocher, maintenance department' },
     tags: ['Siemens Step 7', 'VAT', { fr: 'Électropneumatique', en: 'Electro-pneumatics' }, { fr: 'Mise en service', en: 'Commissioning' }],
-    image: null,
-    imageAlt: { fr: 'Armoire électropneumatique', en: 'Electro-pneumatic cabinet' },
+    image: '/images/projets/armoire/armoire.webp',
+    imagePosition: '50% 20%', // photo verticale : cadrage sur les modules du haut
+    imageAlt: { fr: "Armoire électropneumatique du projet : modules d'électrovannes et câblage", en: 'The project cabinet: solenoid valve modules and wiring' },
     github: null,
     details: {
       intro: {
@@ -127,8 +135,7 @@ export const projects = [
         en: ['Cabinet fully commissioned.']
       },
       gallery: [
-        { src: null, placeholder: { fr: "[PHOTO DE L'ARMOIRE À VENIR]", en: '[CABINET PHOTO COMING SOON]' } },
-        { src: null, placeholder: { fr: '[PHOTO DES MODULES À VENIR]', en: '[MODULES PHOTO COMING SOON]' } }
+        { src: '/images/projets/armoire/armoire.webp', tall: true, alt: { fr: "L'armoire : modules d'électrovannes et câblage", en: 'The cabinet: solenoid valve modules and wiring' } }
       ]
     }
   },

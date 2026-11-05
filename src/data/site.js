@@ -12,7 +12,7 @@ export const site = {
   },
   // Images de l'accueil (WebP dans public/images/accueil/) ; null = cadre « image à venir »
   home: {
-    transitions: [null, null, null], // sous la surface · à propos → projets · projets → recherche
+    transitions: ['/images/accueil/transition-1.webp', '/images/accueil/transition-2.webp', '/images/accueil/transition-3.webp'], // sous la surface · à propos → projets · projets → recherche
     seabed: null
   }
 }

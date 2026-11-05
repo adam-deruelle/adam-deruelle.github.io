@@ -79,7 +79,17 @@ watchEffect(() => {
           <h2 class="text-2xl font-bold">{{ t('project.images') }}</h2>
           <div class="mt-4 grid gap-4 sm:grid-cols-2">
             <figure v-for="(g, i) in d.gallery" :key="i">
-              <img v-if="g.src" :src="g.src" :alt="loc(g.alt)" loading="lazy" decoding="async" width="1200" height="900" class="aspect-[4/3] w-full rounded-xl object-cover" />
+              <img
+                v-if="g.src"
+                :src="g.src"
+                :alt="loc(g.alt)"
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="900"
+                class="w-full rounded-xl"
+                :class="[g.tall ? 'aspect-[3/4]' : 'aspect-[4/3]', g.fit === 'contain' ? 'bg-mist object-contain p-4' : 'object-cover']"
+              />
               <div v-else class="placeholder aspect-[4/3] w-full rounded-xl px-4 text-center">{{ loc(g.placeholder) }}</div>
               <figcaption v-if="g.src && g.alt" class="mt-2 text-sm text-muted">{{ loc(g.alt) }}</figcaption>
             </figure>
