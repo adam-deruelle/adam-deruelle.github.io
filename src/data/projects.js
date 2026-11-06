@@ -137,6 +137,7 @@ export const projects = [
         en: ['Cabinet fully commissioned.']
       },
       gallery: [
+        { src: '/images/projets/armoire/ancienne-armoire.webp', tall: true, fit: 'contain', alt: { fr: "L'ancienne armoire avant le revamping, avec le repérage des zones : cuves, NEP, lignes de conditionnement, réserve", en: 'The old cabinet before the revamping, with the zones marked: tanks, CIP, packaging lines, spare' } },
         { src: '/images/projets/armoire/armoire.webp', tall: true, alt: { fr: "L'armoire : modules d'électrovannes et câblage", en: 'The cabinet: solenoid valve modules and wiring' } }
       ]
     }
