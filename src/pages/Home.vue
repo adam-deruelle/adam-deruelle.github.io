@@ -97,9 +97,12 @@ const rays = [
       <div class="horizon" aria-hidden="true"></div>
       <SailBoat class="boat" :label="t('home.boatAlt')" />
         <svg class="surface" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
-          <path class="back" d="M0 22 C150 10 260 30 420 20 S700 6 860 22 S1160 34 1300 18 S1400 14 1440 20 V70 H0Z" />
-          <path class="front" d="M0 34 C120 20 240 48 360 32 S600 16 720 32 S960 48 1080 30 S1320 16 1440 32 V70 H0Z" />
-          <path class="glint" d="M0 34 C120 20 240 48 360 32 S600 16 720 32 S960 48 1080 30 S1320 16 1440 32" />
+          <!-- vagues un peu plus larges et plus profondes que le cadre : elles peuvent bouger sans laisser de vide -->
+          <g class="wave-back"><path class="back" d="M-120 22 C30 10 140 30 300 20 S580 6 740 22 S1040 34 1180 18 S1400 14 1560 20 V110 H-120Z" /></g>
+          <g class="wave-front">
+            <path class="front" d="M-120 34 C0 20 120 48 240 32 S480 16 600 32 S840 48 960 30 S1200 16 1320 32 S1500 44 1560 34 V110 H-120Z" />
+            <path class="glint" d="M-120 34 C0 20 120 48 240 32 S480 16 600 32 S840 48 960 30 S1200 16 1320 32 S1500 44 1560 34" />
+          </g>
         </svg>
     </header>
 
@@ -274,6 +277,7 @@ const rays = [
 .horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 56px; background: linear-gradient(to bottom, #5aa6cf, #4a9cc8 50%, var(--surface)); z-index: 2; }
 .horizon::before { content: ''; position: absolute; inset: 14px 0 auto; height: 1px; background: rgba(255, 255, 255, 0.28); filter: blur(0.6px); }
 .surface { position: absolute; left: 0; bottom: 0; display: block; width: 100%; height: 70px; z-index: 4; pointer-events: none; }
+.surface { overflow: visible; }
 .surface .back { fill: rgba(62, 147, 192, 0.55); }
 .surface .front { fill: var(--surface); }
 .surface .glint { fill: none; stroke: rgba(255, 255, 255, 0.8); stroke-width: 2; }
@@ -292,6 +296,12 @@ const rays = [
 .fauna .lure { fill: #bff6ff; filter: drop-shadow(0 0 6px #7fe3ff) drop-shadow(0 0 14px rgba(127, 227, 255, 0.7)); }
 .fauna .teeth { fill: none; stroke: rgba(200, 220, 230, 0.5); stroke-width: 1.2; }
 @media (prefers-reduced-motion: no-preference) {
+  /* mouvements très légers : nuages qui dérivent, houle, voilier qui tangue (pivot à l'étrave, là où part la chaîne) */
+  .cloud { animation: drift 48s ease-in-out infinite alternate; }
+  .cloud + .cloud { animation-duration: 62s; animation-delay: -20s; }
+  .wave-back { animation: swell-back 7s ease-in-out infinite alternate; }
+  .wave-front { animation: swell-front 5.5s ease-in-out infinite alternate; }
+  .boat { transform-origin: 12% 85%; animation: rock 5.5s ease-in-out infinite alternate; }
   .ray { animation: shimmer 7s ease-in-out infinite alternate; }
   .ray:nth-child(2n) { animation-duration: 9s; }
   .ray:nth-child(3n) { animation-delay: -3s; }
@@ -301,6 +311,10 @@ const rays = [
   .weed { transform-origin: 50% 100%; animation: sway 5s ease-in-out infinite alternate; }
   .bubble { animation: rise var(--d, 10s) linear var(--delay, 0s) infinite; }
 }
+@keyframes drift { from { transform: translateX(-24px); } to { transform: translateX(24px); } }
+@keyframes swell-back { from { transform: translate(-40px, -2px); } to { transform: translate(40px, 2px); } }
+@keyframes swell-front { from { transform: translate(30px, 2px); } to { transform: translate(-30px, -2px); } }
+@keyframes rock { from { transform: translateY(1px) rotate(-0.8deg); } to { transform: translateY(-1.5px) rotate(0.8deg); } }
 @keyframes shimmer { from { opacity: 0.55; } to { opacity: 1; } }
 @keyframes swim { from { transform: translateX(0); } to { transform: translateX(-120vw); } }
 @keyframes swimr { from { transform: translateX(0); } to { transform: translateX(120vw); } }
