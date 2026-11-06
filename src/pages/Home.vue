@@ -97,7 +97,20 @@ const rays = [
       <div class="horizon" aria-hidden="true"></div>
       <SailBoat class="boat" :label="t('home.boatAlt')" />
         <svg class="surface" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
-          <!-- vagues un peu plus larges et plus profondes que le cadre : elles peuvent bouger sans laisser de vide -->
+          <!-- vagues un peu plus larges et plus profondes que le cadre : elles peuvent bouger sans laisser de vide.
+               Sous la ligne de flottaison (y > 70), le remplissage s'efface en fondu pour se mêler au dégradé de la mer. -->
+          <defs>
+            <linearGradient id="wave-front-fill" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="110">
+              <stop offset="0" stop-color="#3e93c0" />
+              <stop offset="0.6" stop-color="#3e93c0" />
+              <stop offset="1" stop-color="#3e93c0" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="wave-back-fill" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="110">
+              <stop offset="0" stop-color="#3e93c0" stop-opacity="0.55" />
+              <stop offset="0.6" stop-color="#3e93c0" stop-opacity="0.55" />
+              <stop offset="1" stop-color="#3e93c0" stop-opacity="0" />
+            </linearGradient>
+          </defs>
           <g class="wave-back"><path class="back" d="M-120 22 C30 10 140 30 300 20 S580 6 740 22 S1040 34 1180 18 S1400 14 1560 20 V110 H-120Z" /></g>
           <g class="wave-front">
             <path class="front" d="M-120 34 C0 20 120 48 240 32 S480 16 600 32 S840 48 960 30 S1200 16 1320 32 S1500 44 1560 34 V110 H-120Z" />
@@ -278,8 +291,8 @@ const rays = [
 .horizon::before { content: ''; position: absolute; inset: 14px 0 auto; height: 1px; background: rgba(255, 255, 255, 0.28); filter: blur(0.6px); }
 .surface { position: absolute; left: 0; bottom: 0; display: block; width: 100%; height: 70px; z-index: 4; pointer-events: none; }
 .surface { overflow: visible; }
-.surface .back { fill: rgba(62, 147, 192, 0.55); }
-.surface .front { fill: var(--surface); }
+.surface .back { fill: url(#wave-back-fill); }
+.surface .front { fill: url(#wave-front-fill); }
 .surface .glint { fill: none; stroke: rgba(255, 255, 255, 0.8); stroke-width: 2; }
 .rays { position: absolute; inset: 0 0 auto 0; height: 1300px; pointer-events: none; overflow: hidden; mix-blend-mode: screen; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 90px); mask-image: linear-gradient(to bottom, transparent, #000 90px); }
 .ray { position: absolute; top: -60px; height: 100%; transform-origin: 50% 0; background: linear-gradient(to bottom, rgba(214, 236, 243, 0.42), rgba(214, 236, 243, 0.12) 45%, rgba(214, 236, 243, 0) 85%); filter: blur(10px); }
