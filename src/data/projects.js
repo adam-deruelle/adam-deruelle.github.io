@@ -17,6 +17,11 @@
 //               wide: true (sur toute la largeur), pixel: true (pixel art, sans lissage)
 //               vidéo : { video, poster, alt } (fichier MP4 sans piste audio)
 //   details.story[]  section « En détail » : { title: { fr, en }, body: { fr, en } }
+//               le bloc dont le titre commence par « Ce que j'en retiens » devient la carte mise en avant
+//   details.stats[]  chiffres clés : { value (texte ou { fr, en }), label: { fr, en } }
+//   details.lesson   citation de la carte « Ce que j'en retiens » : { fr, en }
+//   details.compare  comparateur avant/après : { before: { src, alt }, after: { src, alt } }
+//   gallery[].link   true = l'image s'ouvre en grand au clic
 //               body = paragraphes séparés par une ligne vide ; **gras** et *italique* autorisés
 //   github      lien du dépôt ; null = pas de lien
 //   details     contenu de la fiche : intro, role[], tech[], results[], table, credits[], gallery[]
@@ -89,6 +94,15 @@ export const projects = [
         { name: 'Adam Deruelle', role: { fr: 'Vision, architecture et roadmap · modèle cinématique du bras', en: 'Vision, architecture and roadmap · kinematic model of the arm' } },
         { name: 'Harry Troule', role: { fr: 'Logiciel de contrôle Talos Studio, développé avec Claude Code', en: 'Talos Studio control software, developed with Claude Code' } }
       ],
+      stats: [
+        { value: '6', label: { fr: 'servos', en: 'servos' } },
+        { value: '8', label: { fr: 'phases', en: 'phases' } },
+        { value: 'z\u00a0=\u00a0308\u00a0mm', label: { fr: 'validation du modèle', en: 'model check' } }
+      ],
+      lesson: {
+        fr: 'Un modèle cinématique propre sert de base à tout le reste.',
+        en: 'A clean kinematic model is the foundation for everything else.'
+      },
       story: [
         {
           title: {
@@ -188,6 +202,16 @@ export const projects = [
           'Documentation (wiring diagrams, P&ID, PCVue) brought back in line with the field'
         ]
       },
+      stats: [
+        { value: '≈\u00a0100', label: { fr: 'électrovannes', en: 'solenoid valves' } },
+        { value: '11', label: { fr: 'modules', en: 'modules' } },
+        { value: { fr: '≈\u00a07\u00a0000\u00a0€', en: '≈\u00a0€7,000' }, label: { fr: 'de matériel', en: 'of hardware' } },
+        { value: '2', label: { fr: 'arrêts techniques', en: 'maintenance shutdowns' } }
+      ],
+      lesson: {
+        fr: "Un fichier de suivi ne vaut que s'il est mis à jour à chaque modification.",
+        en: "A tracking file is only worth something if it's updated after every change."
+      },
       story: [
         {
           title: {
@@ -230,9 +254,13 @@ export const projects = [
           }
         }
       ],
+      compare: {
+        before: { src: '/images/projets/armoire/ancienne-armoire.webp', alt: { fr: "L'ancienne armoire avant le revamping", en: 'The old cabinet before the revamping' } },
+        after: { src: '/images/projets/armoire/armoire.webp', alt: { fr: "La nouvelle armoire après le revamping : modules d'électrovannes et câblage", en: 'The new cabinet after the revamping: solenoid valve modules and wiring' } }
+      },
       gallery: [
-        { src: '/images/projets/armoire/ancienne-armoire.webp', tall: true, fit: 'contain', alt: { fr: "L'ancienne armoire avant le revamping, avec le repérage des zones : cuves, NEP, lignes de conditionnement, réserve", en: 'The old cabinet before the revamping, with the zones marked: tanks, CIP, packaging lines, spare' } },
-        { src: '/images/projets/armoire/armoire.webp', tall: true, alt: { fr: "La nouvelle armoire après le revamping : modules d'électrovannes et câblage", en: 'The new cabinet after the revamping: solenoid valve modules and wiring' } }
+        { src: '/images/projets/armoire/ancienne-armoire.webp', tall: true, fit: 'contain', link: true, alt: { fr: "L'ancienne armoire avant le revamping, avec le repérage des zones : cuves, NEP, lignes de conditionnement, réserve", en: 'The old cabinet before the revamping, with the zones marked: tanks, CIP, packaging lines, spare' } }
+
       ]
     }
   },
@@ -296,6 +324,15 @@ export const projects = [
           'Complete program running on the board (code6.py), built in 6 incremental versions, each tested before the next.',
           'The same logic runs on a microcontroller and in a PLC environment.'
         ]
+      },
+      stats: [
+        { value: '6', label: { fr: 'versions', en: 'versions' } },
+        { value: '2', label: { fr: 'voies', en: 'lanes' } },
+        { value: '3', label: { fr: 'langages CODESYS (LD, ST, SFC)', en: 'CODESYS languages (LD, ST, SFC)' } }
+      ],
+      lesson: {
+        fr: 'Une logique bien modélisée se transpose facilement.',
+        en: 'Well-modelled logic carries over easily.'
       },
       story: [
         {
@@ -370,6 +407,15 @@ export const projects = [
       results: {
         fr: ['Projet mené du 4 novembre 2024 au 24 janvier 2025, de la rétro-ingénierie et du schéma sous Proteus jusqu\'à la carte soudée, aux jeux, au boîtier imprimé et au bilan technique oral.'],
         en: ['Project run from 4 November 2024 to 24 January 2025, from reverse engineering and the Proteus schematic to the soldered board, the games, the printed case and the final technical review.']
+      },
+      stats: [
+        { value: '3', label: { fr: 'jeux', en: 'games' } },
+        { value: '14', label: { fr: 'points de test', en: 'test points' } },
+        { value: '3', label: { fr: 'mois', en: 'months' } }
+      ],
+      lesson: {
+        fr: 'Vérifier le schéma fonction par fonction avant de router.',
+        en: 'Check the schematic function by function before routing.'
       },
       story: [
         {
@@ -460,6 +506,11 @@ export const projects = [
         en: ['In development: tutorial (~5 min) targeted for the February 2027 open day.']
       },
       credits: [{ name: 'Adam Deruelle' }, { name: 'Lucas' }, { name: 'Baptiste' }, { name: 'Ewen' }],
+      stats: [
+        { value: '2', label: { fr: 'joueurs', en: 'players' } },
+        { value: '4', label: { fr: 'étudiants', en: 'students' } },
+        { value: { fr: 'févr.\u00a02027', en: 'Feb.\u00a02027' }, label: { fr: 'JPO', en: 'open day' } }
+      ],
       story: [
         {
           title: {
@@ -519,6 +570,14 @@ export const projects = [
       results: {
         fr: ["Les rédiger m'a obligé à comprendre chaque sujet assez bien pour l'expliquer simplement, et elles ont fait gagner du temps de recherche à ma promo."],
         en: ['Writing them forced me to understand each topic well enough to explain it simply, and they saved my classmates a lot of searching time.']
+      },
+      stats: [
+        { value: '4', label: { fr: 'APP', en: 'modules' } },
+        { value: '2', label: { fr: 'langages (C, CircuitPython)', en: 'languages (C, CircuitPython)' } }
+      ],
+      lesson: {
+        fr: 'Expliquer simplement oblige à comprendre vraiment.',
+        en: 'Explaining simply forces you to really understand.'
       },
       story: [
         {

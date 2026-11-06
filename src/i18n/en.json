@@ -131,7 +131,14 @@
     "images": "Images",
     "github": "View the code on GitHub",
     "notFound": "This project does not exist.",
-    "story": "In depth"
+    "storyKicker": "In depth",
+    "storyTitle": "How it went",
+    "keyFigures": "Key figures",
+    "prev": "← Previous project",
+    "next": "Next project →",
+    "otherProjects": "Other projects",
+    "openImage": "Open the full-size image: {alt}",
+    "clickToEnlarge": "click to enlarge"
   },
   "parcours": {
     "title": "Background",
@@ -161,5 +168,12 @@
     "preview": "30-second preview without a Spotify account",
     "error": "The Spotify player could not load.",
     "open": "Listen on Spotify"
+  },
+  "compare": {
+    "before": "Before",
+    "after": "After",
+    "label": "Compare before and after",
+    "valueText": "{before}% before, {after}% after",
+    "caption": "Drag the handle (or use the arrow keys) to compare."
   }
 }

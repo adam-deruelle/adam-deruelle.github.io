@@ -1,24 +1,26 @@
 <script setup>
 import { computed, watchEffect } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getProject } from '@/data/projects'
+import { getProject, projects } from '@/data/projects'
 import { useLoc } from '@/i18n/loc'
 import PageHeader from '@/components/PageHeader.vue'
 import TypeBadge from '@/components/TypeBadge.vue'
 import SocialIcon from '@/components/SocialIcon.vue'
+import StoryCards from '@/components/StoryCards.vue'
+import BeforeAfter from '@/components/BeforeAfter.vue'
 
 const props = defineProps({ slug: { type: String, required: true } })
 const { t } = useI18n()
 const loc = useLoc()
 const p = computed(() => getProject(props.slug))
 const d = computed(() => p.value?.details ?? {})
-// Texte « En détail » : paragraphes séparés par une ligne vide, **gras** et *italique* (contenu du site, échappé avant mise en forme)
-const escape = (x) => x.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-const paragraphs = (text) =>
-  (text || '')
-    .split(/\n\s*\n/)
-    .map((para) => escape(para.trim()).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>'))
-    .filter(Boolean)
+// Projets précédent / suivant (ordre de projects.js, en boucle)
+const neighbours = computed(() => {
+  const i = projects.findIndex((x) => x.slug === props.slug)
+  if (i < 0) return null
+  const n = projects.length
+  return { prev: projects[(i - 1 + n) % n], next: projects[(i + 1) % n] }
+})
 const initials = (name) => name.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase()
 
 watchEffect(() => {
@@ -82,9 +84,10 @@ watchEffect(() => {
           </ul>
         </section>
 
-        <section v-if="d.gallery?.length">
+        <section v-if="d.gallery?.length || d.compare">
           <h2 class="text-2xl font-bold">{{ t('project.images') }}</h2>
-          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+          <BeforeAfter v-if="d.compare" :before="d.compare.before" :after="d.compare.after" class="mt-4 max-w-[560px]" />
+          <div v-if="d.gallery?.length" class="mt-4 grid gap-4 sm:grid-cols-2">
             <figure v-for="(g, i) in d.gallery" :key="i" :class="{ 'sm:col-span-2': g.wide }">
               <!-- vidéo : sans piste audio, muette, jamais en lecture automatique -->
               <video
@@ -100,6 +103,18 @@ watchEffect(() => {
                 height="540"
                 class="aspect-video w-full rounded-xl bg-black"
               ></video>
+              <a v-else-if="g.src && g.link" :href="g.src" target="_blank" rel="noopener" class="block rounded-xl" :aria-label="t('project.openImage', { alt: loc(g.alt) })">
+                <img
+                  :src="g.src"
+                  :alt="loc(g.alt)"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="900"
+                  class="w-full rounded-xl transition-opacity hover:opacity-90"
+                  :class="[g.tall ? 'aspect-[3/4]' : 'aspect-[4/3]', g.fit === 'contain' ? 'bg-mist object-contain p-4' : 'object-cover']"
+                />
+              </a>
               <img
                 v-else-if="g.src"
                 :src="g.src"
@@ -112,21 +127,12 @@ watchEffect(() => {
                 :class="[g.wide ? 'h-auto' : g.tall ? 'aspect-[3/4]' : 'aspect-[4/3]', g.fit === 'contain' ? 'bg-mist object-contain p-4' : 'object-cover', { '[image-rendering:pixelated]': g.pixel }]"
               />
               <div v-else class="placeholder aspect-[4/3] w-full rounded-xl px-4 text-center">{{ loc(g.placeholder) }}</div>
-              <figcaption v-if="(g.src || g.video) && g.alt" class="mt-2 text-sm text-muted">{{ loc(g.alt) }}</figcaption>
+              <figcaption v-if="(g.src || g.video) && g.alt" class="mt-2 text-sm text-muted">{{ loc(g.alt) }}<template v-if="g.link"> · {{ t('project.clickToEnlarge') }}</template></figcaption>
             </figure>
           </div>
         </section>
 
-        <!-- En détail : textes longs du projet (details.story) -->
-        <section v-if="d.story?.length" aria-labelledby="story-title">
-          <h2 id="story-title" class="text-2xl font-bold">{{ t('project.story') }}</h2>
-          <div class="mt-4 max-w-[70ch] space-y-8">
-            <div v-for="(b, i) in d.story" :key="i">
-              <h3 class="text-xl font-semibold text-[#EE6A4D]">{{ loc(b.title) }}</h3>
-              <p v-for="(para, j) in paragraphs(loc(b.body))" :key="j" class="story-p mt-3" v-html="para"></p>
-            </div>
-          </div>
-        </section>
+        <StoryCards v-if="d.story?.length" :details="d" />
       </div>
 
       <aside class="space-y-8 lg:sticky lg:top-24 lg:self-start">
@@ -150,6 +156,34 @@ watchEffect(() => {
         </section>
       </aside>
     </article>
+
+    <nav v-if="neighbours" class="container-site pb-16" :aria-label="t('project.otherProjects')">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <router-link
+          v-for="(n, k) in [{ p: neighbours.prev, label: t('project.prev'), cls: '' }, { p: neighbours.next, label: t('project.next'), cls: 'sm:text-right sm:flex-row-reverse' }]"
+          :key="k"
+          :to="'/projets/' + n.p.slug"
+          class="group flex items-center gap-4 rounded-2xl border border-line bg-surface p-3 transition-colors hover:border-primary"
+          :class="n.cls"
+        >
+          <img
+            v-if="n.p.image"
+            :src="n.p.image"
+            alt=""
+            loading="lazy"
+            class="h-20 w-28 shrink-0 rounded-xl"
+            :class="n.p.imageFit === 'contain' ? 'bg-mist object-contain p-1.5' : 'object-cover'"
+            :style="n.p.imagePosition ? { objectPosition: n.p.imagePosition } : null"
+          />
+          <span v-else class="placeholder h-20 w-28 shrink-0 rounded-xl" aria-hidden="true"></span>
+          <span class="min-w-0">
+            <span class="block font-mono text-xs font-semibold uppercase tracking-wider text-link">{{ n.label }}</span>
+            <span class="mt-1 block font-display text-lg font-semibold text-title group-hover:text-link">{{ loc(n.p.title) }}</span>
+            <span v-if="n.p.context" class="block text-sm text-muted">{{ loc(n.p.context) }}</span>
+          </span>
+        </router-link>
+      </div>
+    </nav>
   </template>
 
   <section v-else class="container-site py-24 text-center">
@@ -158,6 +192,3 @@ watchEffect(() => {
   </section>
 </template>
 
-<style scoped>
-.story-p :deep(strong) { color: rgb(var(--c-title)); font-weight: 600; }
-</style>

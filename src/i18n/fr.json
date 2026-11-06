@@ -131,7 +131,14 @@
     "images": "Images",
     "github": "Voir le code sur GitHub",
     "notFound": "Ce projet n'existe pas.",
-    "story": "En détail"
+    "storyKicker": "En détail",
+    "storyTitle": "Comment ça s'est passé",
+    "keyFigures": "Chiffres clés",
+    "prev": "← Projet précédent",
+    "next": "Projet suivant →",
+    "otherProjects": "Autres projets",
+    "openImage": "Ouvrir l'image en grand : {alt}",
+    "clickToEnlarge": "cliquer pour agrandir"
   },
   "parcours": {
     "title": "Parcours",
@@ -161,5 +168,12 @@
     "preview": "Extrait de 30 s sans compte Spotify",
     "error": "Le lecteur Spotify n'a pas pu se charger.",
     "open": "Écouter sur Spotify"
+  },
+  "compare": {
+    "before": "Avant",
+    "after": "Après",
+    "label": "Comparer avant et après",
+    "valueText": "{before} % avant, {after} % après",
+    "caption": "Faites glisser la poignée (ou utilisez les flèches du clavier) pour comparer."
   }
 }
