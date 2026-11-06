@@ -38,13 +38,15 @@ watchEffect(() => {
           <span v-if="p.context" class="text-sm text-muted">{{ loc(p.context) }}</span>
         </div>
       </template>
+      <ul v-if="d.tech?.length" class="mt-5 flex flex-wrap gap-1.5" :aria-label="t('project.tech')">
+        <li v-for="(x, i) in d.tech" :key="i" class="rounded bg-page px-2 py-0.5 text-xs font-medium">{{ loc(x) }}</li>
+      </ul>
       <a v-if="p.github" :href="p.github" target="_blank" rel="noopener" class="btn btn-primary mt-6">
         <SocialIcon name="github" class="h-5 w-5" />{{ t('project.github') }}
       </a>
     </PageHeader>
 
-    <article class="container-site grid gap-12 py-12 lg:grid-cols-[1fr_18rem]">
-      <div class="min-w-0 space-y-10">
+    <article class="container-site space-y-12 py-12">
         <section v-if="d.intro">
           <h2 class="text-2xl font-bold">{{ t('project.context') }}</h2>
           <p class="mt-3 max-w-prose">{{ loc(d.intro) }}</p>
@@ -60,7 +62,7 @@ watchEffect(() => {
         </section>
 
         <section v-if="d.table">
-          <div class="overflow-x-auto rounded-xl border border-line">
+          <div class="max-w-3xl overflow-x-auto rounded-xl border border-line">
             <table class="w-full min-w-[28rem] text-left text-sm tabular-nums">
               <caption class="caption-bottom px-4 py-3 text-left text-sm text-muted">{{ loc(d.table.caption) }}</caption>
               <thead class="bg-mist">
@@ -86,7 +88,7 @@ watchEffect(() => {
 
         <section v-if="d.gallery?.length || d.compare">
           <h2 class="text-2xl font-bold">{{ t('project.images') }}</h2>
-          <BeforeAfter v-if="d.compare" :before="d.compare.before" :after="d.compare.after" class="mt-4 max-w-[560px]" />
+          <BeforeAfter v-if="d.compare" :before="d.compare.before" :after="d.compare.after" class="mx-auto mt-4 max-w-[720px]" />
           <div v-if="d.gallery?.length" class="mt-4 grid gap-4 sm:grid-cols-2">
             <figure v-for="(g, i) in d.gallery" :key="i" :class="{ 'sm:col-span-2': g.wide }">
               <!-- vidéo : sans piste audio, muette, jamais en lecture automatique -->
@@ -133,18 +135,10 @@ watchEffect(() => {
         </section>
 
         <StoryCards v-if="d.story?.length" :details="d" />
-      </div>
 
-      <aside class="space-y-8 lg:sticky lg:top-24 lg:self-start">
-        <section v-if="d.tech">
-          <h2 class="text-sm font-bold uppercase tracking-wider text-muted">{{ t('project.tech') }}</h2>
-          <ul class="mt-3 flex flex-wrap gap-2">
-            <li v-for="(x, i) in d.tech" :key="i" class="rounded-md bg-mist px-2.5 py-1 text-sm font-medium">{{ loc(x) }}</li>
-          </ul>
-        </section>
         <section v-if="d.credits">
-          <h2 class="text-sm font-bold uppercase tracking-wider text-muted">{{ t('project.credits') }}</h2>
-          <ul class="mt-3 space-y-3">
+          <h2 class="text-2xl font-bold">{{ t('project.credits') }}</h2>
+          <ul class="mt-4 grid gap-4 sm:grid-cols-2">
             <li v-for="c in d.credits" :key="c.name" class="flex gap-3" :class="c.role ? 'items-start' : 'items-center'">
               <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-mist text-xs font-bold text-title" aria-hidden="true">{{ initials(c.name) }}</span>
               <div class="min-w-0 text-sm">
@@ -154,7 +148,6 @@ watchEffect(() => {
             </li>
           </ul>
         </section>
-      </aside>
     </article>
 
     <nav v-if="neighbours" class="container-site pb-16" :aria-label="t('project.otherProjects')">
