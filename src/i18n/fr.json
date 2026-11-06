@@ -130,7 +130,8 @@
     "credits": "Crédits",
     "images": "Images",
     "github": "Voir le code sur GitHub",
-    "notFound": "Ce projet n'existe pas."
+    "notFound": "Ce projet n'existe pas.",
+    "story": "En détail"
   },
   "parcours": {
     "title": "Parcours",

@@ -12,6 +12,13 @@ const { t } = useI18n()
 const loc = useLoc()
 const p = computed(() => getProject(props.slug))
 const d = computed(() => p.value?.details ?? {})
+// Texte « En détail » : paragraphes séparés par une ligne vide, **gras** et *italique* (contenu du site, échappé avant mise en forme)
+const escape = (x) => x.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+const paragraphs = (text) =>
+  (text || '')
+    .split(/\n\s*\n/)
+    .map((para) => escape(para.trim()).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>'))
+    .filter(Boolean)
 const initials = (name) => name.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase()
 
 watchEffect(() => {
@@ -109,6 +116,17 @@ watchEffect(() => {
             </figure>
           </div>
         </section>
+
+        <!-- En détail : textes longs du projet (details.story) -->
+        <section v-if="d.story?.length" aria-labelledby="story-title">
+          <h2 id="story-title" class="text-2xl font-bold">{{ t('project.story') }}</h2>
+          <div class="mt-4 max-w-[70ch] space-y-8">
+            <div v-for="(b, i) in d.story" :key="i">
+              <h3 class="text-xl font-semibold">{{ loc(b.title) }}</h3>
+              <p v-for="(para, j) in paragraphs(loc(b.body))" :key="j" class="story-p mt-3" v-html="para"></p>
+            </div>
+          </div>
+        </section>
       </div>
 
       <aside class="space-y-8 lg:sticky lg:top-24 lg:self-start">
@@ -139,3 +157,7 @@ watchEffect(() => {
     <router-link to="/projets" class="btn btn-primary mt-8">{{ t('project.back') }}</router-link>
   </section>
 </template>
+
+<style scoped>
+.story-p :deep(strong) { color: rgb(var(--c-title)); font-weight: 600; }
+</style>
