@@ -79,8 +79,22 @@ watchEffect(() => {
           <h2 class="text-2xl font-bold">{{ t('project.images') }}</h2>
           <div class="mt-4 grid gap-4 sm:grid-cols-2">
             <figure v-for="(g, i) in d.gallery" :key="i" :class="{ 'sm:col-span-2': g.wide }">
+              <!-- vidéo : sans piste audio, muette, jamais en lecture automatique -->
+              <video
+                v-if="g.video"
+                :src="g.video"
+                :poster="g.poster"
+                :aria-label="loc(g.alt)"
+                controls
+                muted
+                playsinline
+                preload="none"
+                width="960"
+                height="540"
+                class="aspect-video w-full rounded-xl bg-black"
+              ></video>
               <img
-                v-if="g.src"
+                v-else-if="g.src"
                 :src="g.src"
                 :alt="loc(g.alt)"
                 loading="lazy"
@@ -91,7 +105,7 @@ watchEffect(() => {
                 :class="[g.wide ? 'h-auto' : g.tall ? 'aspect-[3/4]' : 'aspect-[4/3]', g.fit === 'contain' ? 'bg-mist object-contain p-4' : 'object-cover', { '[image-rendering:pixelated]': g.pixel }]"
               />
               <div v-else class="placeholder aspect-[4/3] w-full rounded-xl px-4 text-center">{{ loc(g.placeholder) }}</div>
-              <figcaption v-if="g.src && g.alt" class="mt-2 text-sm text-muted">{{ loc(g.alt) }}</figcaption>
+              <figcaption v-if="(g.src || g.video) && g.alt" class="mt-2 text-sm text-muted">{{ loc(g.alt) }}</figcaption>
             </figure>
           </div>
         </section>

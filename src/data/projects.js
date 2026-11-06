@@ -15,6 +15,7 @@
 //   imagePosition  point de cadrage, ex. '50% 20%' (facultatif)
 //   gallery[]   { src, alt } ; options : fit: 'contain', tall: true (photo verticale),
 //               wide: true (sur toute la largeur), pixel: true (pixel art, sans lissage)
+//               vidéo : { video, poster, alt } (fichier MP4 sans piste audio)
 //   github      lien du dépôt ; null = pas de lien
 //   details     contenu de la fiche : intro, role[], tech[], results[], table, credits[], gallery[]
 //               credits = [{ name, role: { fr, en } }] (role facultatif)
@@ -244,11 +245,11 @@ export const projects = [
         en: ['Project run from 4 November 2024 to 24 January 2025, from reverse engineering and the Proteus schematic to the soldered board, the games, the printed case and the final technical review.']
       },
       gallery: [
+        { video: '/images/projets/console/demo-space-rescue.mp4', poster: '/images/projets/console/demo-space-rescue-poster.webp', wide: true, alt: { fr: 'La console en marche : partie de Space Rescue (vidéo sans son)', en: 'The console running: a game of Space Rescue (silent video)' } },
         { src: '/images/projets/console/implantation.webp', fit: 'contain', wide: true, alt: { fr: "Schéma d'implantation de la carte (Proteus)", en: 'Board component layout (Proteus)' } },
         { src: '/images/projets/console/christmas-pong.webp', fit: 'contain', pixel: true, alt: { fr: "Écran titre de Christmas Pong", en: 'Christmas Pong title screen' } },
         { src: '/images/projets/console/gunfight.webp', fit: 'contain', pixel: true, alt: { fr: 'Écran titre de Gunfight', en: 'Gunfight title screen' } },
         { src: '/images/projets/console/space-rescue.webp', fit: 'contain', pixel: true, alt: { fr: 'Écran titre de Space Rescue', en: 'Space Rescue title screen' } },
-        { src: null, placeholder: { fr: '[PHOTO DE LA CONSOLE À VENIR]', en: '[CONSOLE PHOTO COMING SOON]' } },
         { src: '/images/projets/console/planning.webp', fit: 'contain', wide: true, alt: { fr: 'Planning du projet (diagramme de Gantt)', en: 'Project schedule (Gantt chart)' } }
       ]
     }
