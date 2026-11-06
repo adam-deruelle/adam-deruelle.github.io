@@ -122,7 +122,7 @@ watchEffect(() => {
           <h2 id="story-title" class="text-2xl font-bold">{{ t('project.story') }}</h2>
           <div class="mt-4 max-w-[70ch] space-y-8">
             <div v-for="(b, i) in d.story" :key="i">
-              <h3 class="text-xl font-semibold">{{ loc(b.title) }}</h3>
+              <h3 class="text-xl font-semibold text-[#EE6A4D]">{{ loc(b.title) }}</h3>
               <p v-for="(para, j) in paragraphs(loc(b.body))" :key="j" class="story-p mt-3" v-html="para"></p>
             </div>
           </div>

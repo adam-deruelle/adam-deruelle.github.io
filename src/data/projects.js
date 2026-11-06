@@ -177,8 +177,16 @@ export const projects = [
       },
       tech: ['Siemens Step 7', { fr: 'Table de visualisation (VAT)', en: 'Variable table (VAT)' }, { fr: 'Électropneumatique', en: 'Electro-pneumatics' }, { fr: 'Relais et sorties automate', en: 'Relays and PLC outputs' }],
       results: {
-        fr: ['Mise en service complète de l\'armoire.'],
-        en: ['Cabinet fully commissioned.']
+        fr: [
+          "Mise en service complète de l'armoire (≈ 100 électrovannes, 11 modules) en 2 arrêts techniques",
+          '≈ 7 000 € de matériel, contre un devis de 11 000 € pour une dizaine d\'électrovannes seulement',
+          'Documentation (schémas, PID, PCVue) remise en cohérence avec le terrain'
+        ],
+        en: [
+          'Cabinet fully commissioned (≈ 100 solenoid valves, 11 modules) over 2 maintenance shutdowns',
+          '≈ €7,000 of hardware, versus an €11,000 quote for only ten or so solenoid valves',
+          'Documentation (wiring diagrams, P&ID, PCVue) brought back in line with the field'
+        ]
       },
       story: [
         {
@@ -217,8 +225,8 @@ export const projects = [
             en: "What I took away"
           },
           body: {
-            fr: "L'analyse de l'existant a dû être refaite deux fois avant d'être fiable, et c'est elle qui a rendu la mise en service sans surprise. J'ai appris à planifier (diagramme de Gantt, fichiers de suivi), à être précis avec les fournisseurs, et qu'un fichier de suivi ne vaut que s'il est mis à jour à chaque modification.\n\n**Résultat** : environ 7 000 € de matériel, une armoire entièrement mise en service en deux arrêts techniques, et une documentation remise en cohérence avec le terrain.",
-            en: "The survey of the existing system had to be redone twice before it was reliable, and that is what made commissioning free of surprises. I learned to plan (Gantt chart, tracking files), to be precise with suppliers, and that a tracking file is only worth something if it is updated after every change.\n\n**Result**: about €7,000 of hardware, a cabinet fully commissioned over two maintenance shutdowns, and documentation brought back in line with the field."
+            fr: "L'analyse de l'existant a dû être refaite deux fois avant d'être fiable, et c'est elle qui a rendu la mise en service sans surprise. J'ai appris à planifier (diagramme de Gantt, fichiers de suivi), à être précis avec les fournisseurs, et qu'un fichier de suivi ne vaut que s'il est mis à jour à chaque modification.",
+            en: "The survey of the existing system had to be redone twice before it was reliable, and that is what made commissioning free of surprises. I learned to plan (Gantt chart, tracking files), to be precise with suppliers, and that a tracking file is only worth something if it is updated after every change."
           }
         }
       ],
