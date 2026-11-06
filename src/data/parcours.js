@@ -79,7 +79,7 @@ export const skills = [
   {
     domain: { fr: 'Électronique et embarqué', en: 'Electronics and embedded systems' },
     items: [{ fr: 'Conception de PCB (Proteus)', en: 'PCB design (Proteus)' }, { fr: 'Gravure et soudure', en: 'Etching and soldering' }, 'PIC (C, MPLAB X + MCC)', 'Raspberry Pi Pico', 'I2C, SPI'],
-    projects: ['console', 'variateur', 'feux', 'fiches-survie']
+    projects: ['console', 'feux', 'fiches-survie']
   },
   {
     domain: { fr: 'Programmation', en: 'Programming' },

@@ -329,43 +329,6 @@ export const projects = [
       },
       gallery: []
     }
-  },
-  {
-    slug: 'variateur',
-    type: 'cours',
-    title: { fr: 'Variateur LED sans contact', en: 'Contactless LED dimmer' },
-    summary: {
-      fr: 'Variateur de lumière à base de PIC16F18446, qui adapte la luminosité à l\'éclairage de la pièce.',
-      en: 'Light dimmer built around a PIC16F18446 that adapts brightness to the room lighting.'
-    },
-    context: { fr: 'SAÉ 1, BUT GEII, 2024 · avec Antoine Conty', en: 'SAÉ 1 (university project), BUT GEII, 2024 · with Antoine Conty' },
-    tags: ['PIC16F18446', 'LM2576', 'TEMT6000', 'TCRT5000', 'IRF520'],
-    image: null,
-    imageAlt: { fr: 'Variateur LED', en: 'LED dimmer' },
-    github: null,
-    details: {
-      intro: {
-        fr: "Prototype de variateur de lumière inspiré d'un produit existant, auquel nous avons ajouté la détection automatique de la luminosité à produire en fonction de l'éclairage de la pièce.",
-        en: 'Light dimmer prototype inspired by an existing product, to which we added automatic adjustment of the light output based on the room lighting.'
-      },
-      role: {
-        fr: [
-          "Reprise d'un schéma existant et analyse fonctionnelle pour pouvoir prototyper la carte.",
-          'Prototype autour du PIC16F18446 : régulateur LM2576, capteur de luminosité TEMT6000, capteur infrarouge TCRT5000, MOSFET IRF520.',
-          'Tests de validation, de TP1 à TP11.',
-          'Compte rendu avec un dossier de fabrication : les schémas réalisés, chacun accompagné d\'une explication.'
-        ],
-        en: [
-          'Took over an existing schematic and carried out a functional analysis to prototype the board.',
-          'Prototype built around the PIC16F18446: LM2576 regulator, TEMT6000 light sensor, TCRT5000 infrared sensor, IRF520 MOSFET.',
-          'Validation tests, TP1 to TP11.',
-          'Report including a manufacturing file: every schematic, each with an explanation.'
-        ]
-      },
-      tech: ['PIC16F18446', 'LM2576', 'TEMT6000', 'TCRT5000', 'IRF520'],
-      results: null,
-      gallery: []
-    }
   }
 ]
 
