@@ -219,9 +219,9 @@ export const projects = [
     },
     context: { fr: 'SAÉ 2, BUT GEII, nov. 2024 – janv. 2025', en: 'SAÉ 2 (university project), BUT GEII, Nov. 2024 – Jan. 2025' },
     tags: ['Proteus', 'Raspberry Pi Pico', 'ST7735', 'CircuitPython'],
-    image: '/images/projets/console/implantation.webp',
-    imageFit: 'contain',
-    imageAlt: { fr: "Schéma d'implantation de la carte de la console sous Proteus", en: 'Console board component layout in Proteus' },
+    image: '/images/projets/console/carte.webp',
+    imagePosition: '50% 65%', // cadrage sur l'écran
+    imageAlt: { fr: "La carte de la console en marche, l'écran affiche Space Rescue", en: 'The console board running, the screen shows Space Rescue' },
     github: 'https://github.com/adam-deruelle/pico-retro-handheld',
     details: {
       intro: {
@@ -248,6 +248,7 @@ export const projects = [
       gallery: [
         { video: '/images/projets/console/demo-space-rescue.mp4', poster: '/images/projets/console/demo-space-rescue-poster.webp', wide: true, alt: { fr: 'La console en marche : partie de Space Rescue (vidéo sans son)', en: 'The console running: a game of Space Rescue (silent video)' } },
         { src: '/images/projets/console/implantation.webp', fit: 'contain', wide: true, alt: { fr: "Schéma d'implantation de la carte (Proteus)", en: 'Board component layout (Proteus)' } },
+        { src: '/images/projets/console/carte.webp', alt: { fr: 'La carte soudée : Pico 2, écran ST7735S, joystick et haut-parleur', en: 'The soldered board: Pico 2, ST7735S screen, joystick and speaker' } },
         { src: '/images/projets/console/christmas-pong.webp', fit: 'contain', pixel: true, alt: { fr: "Écran titre de Christmas Pong", en: 'Christmas Pong title screen' } },
         { src: '/images/projets/console/gunfight.webp', fit: 'contain', pixel: true, alt: { fr: 'Écran titre de Gunfight', en: 'Gunfight title screen' } },
         { src: '/images/projets/console/space-rescue.webp', fit: 'contain', pixel: true, alt: { fr: 'Écran titre de Space Rescue', en: 'Space Rescue title screen' } },
