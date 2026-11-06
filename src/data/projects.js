@@ -106,7 +106,7 @@ export const projects = [
     tags: ['Siemens Step 7', 'VAT', { fr: 'Électropneumatique', en: 'Electro-pneumatics' }, { fr: 'Mise en service', en: 'Commissioning' }],
     image: '/images/projets/armoire/armoire.webp',
     imagePosition: '50% 20%', // photo verticale : cadrage sur les modules du haut
-    imageAlt: { fr: "Armoire électropneumatique du projet : modules d'électrovannes et câblage", en: 'The project cabinet: solenoid valve modules and wiring' },
+    imageAlt: { fr: "La nouvelle armoire électropneumatique après le revamping : modules d'électrovannes et câblage", en: 'The new electro-pneumatic cabinet after the revamping: solenoid valve modules and wiring' },
     github: null,
     details: {
       intro: {
@@ -138,7 +138,7 @@ export const projects = [
       },
       gallery: [
         { src: '/images/projets/armoire/ancienne-armoire.webp', tall: true, fit: 'contain', alt: { fr: "L'ancienne armoire avant le revamping, avec le repérage des zones : cuves, NEP, lignes de conditionnement, réserve", en: 'The old cabinet before the revamping, with the zones marked: tanks, CIP, packaging lines, spare' } },
-        { src: '/images/projets/armoire/armoire.webp', tall: true, alt: { fr: "L'armoire : modules d'électrovannes et câblage", en: 'The cabinet: solenoid valve modules and wiring' } }
+        { src: '/images/projets/armoire/armoire.webp', tall: true, alt: { fr: "La nouvelle armoire après le revamping : modules d'électrovannes et câblage", en: 'The new cabinet after the revamping: solenoid valve modules and wiring' } }
       ]
     }
   },
