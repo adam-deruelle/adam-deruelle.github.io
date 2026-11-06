@@ -12,6 +12,7 @@
 //   image       image de la carte (WebP dans public/images/projets/<slug>/) ; null = placeholder
 //   imageAlt, imagePlaceholder (texte du placeholder, facultatif)
 //   imageFit    'contain' pour afficher l'image en entier (rendu détouré) ; sinon recadrée
+//   cardVideo   { src, poster } : vidéo muette en boucle à la place de l'image sur les cartes (poster seul si animation réduite)
 //   imagePosition  point de cadrage, ex. '50% 20%' (facultatif)
 //   gallery[]   { src, alt } ; options : fit: 'contain', tall: true (photo verticale),
 //               wide: true (sur toute la largeur), pixel: true (pixel art, sans lissage)
@@ -42,6 +43,7 @@ export const projects = [
     context: { fr: 'Projet personnel · Phase 1 en cours', en: 'Personal project · Phase 1 in progress' },
     tags: ['xArm 1S', 'Denavit–Hartenberg', 'Python', { fr: 'Architecture modulaire', en: 'Modular architecture' }],
     image: '/images/projets/talos/xarm.webp',
+    cardVideo: { src: '/images/projets/talos/talos-boucle.mp4', poster: '/images/projets/talos/talos-boucle-poster.webp' },
     imageFit: 'contain', // rendu détouré : affiché en entier
     imageAlt: { fr: 'Bras robotisé Hiwonder xArm 1S utilisé dans Talos', en: 'Hiwonder xArm 1S robot arm used in Talos' },
     github: 'https://github.com/adam-deruelle/Talos',
@@ -147,7 +149,7 @@ export const projects = [
       ],
       gallery: [
         { src: '/images/projets/talos/xarm.webp', fit: 'contain', alt: { fr: 'Le bras Hiwonder xArm 1S', en: 'The Hiwonder xArm 1S arm' } },
-        { src: null, placeholder: { fr: '[VIDÉO DU BRAS À VENIR]', en: '[ARM VIDEO COMING SOON]' } }
+        { video: '/images/projets/talos/talos-demo.mp4', poster: '/images/projets/talos/talos-demo-poster.webp', tall: true, alt: { fr: 'Le bras xArm 1S piloté depuis Talos Studio (vidéo sans son)', en: 'The xArm 1S arm driven from Talos Studio (silent video)' } }
       ]
     }
   },

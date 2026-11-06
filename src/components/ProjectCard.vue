@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { useLoc } from '@/i18n/loc'
 import TypeBadge from './TypeBadge.vue'
+import CardMedia from './CardMedia.vue'
 defineProps({ project: { type: Object, required: true }, headingTag: { type: String, default: 'h3' } })
 const { t } = useI18n()
 const loc = useLoc()
@@ -12,17 +13,11 @@ const loc = useLoc()
     :to="'/projets/' + project.slug"
     class="group flex flex-col overflow-hidden rounded-xl border border-line bg-surface transition hover:-translate-y-1 hover:shadow-lg"
   >
-    <img
-      v-if="project.image"
-      :src="project.image"
-      :alt="loc(project.imageAlt)"
-      loading="lazy"
-      decoding="async"
-      width="1200"
-      height="750"
+    <CardMedia
+      v-if="project.cardVideo || project.image"
+      :project="project"
       class="aspect-[16/10] w-full"
-      :class="project.imageFit === 'contain' ? 'bg-mist object-contain p-3' : 'object-cover'"
-      :style="project.imagePosition ? { objectPosition: project.imagePosition } : null"
+      :img-class="['aspect-[16/10] w-full', project.cardVideo || project.imageFit === 'contain' ? 'bg-mist object-contain p-3' : 'object-cover']"
     />
     <div v-else class="placeholder aspect-[16/10] w-full px-4 text-center">
       {{ loc(project.imagePlaceholder) || t('projects.imageSoon') }}

@@ -9,6 +9,7 @@ import { useAnchorChain } from '@/composables/useAnchorChain'
 import SailBoat from '@/components/home/SailBoat.vue'
 import StoneRock from '@/components/home/StoneRock.vue'
 import NowPlaying from '@/components/home/NowPlaying.vue'
+import CardMedia from '@/components/CardMedia.vue'
 
 const { t, tm, rt } = useI18n()
 const loc = useLoc()
@@ -201,8 +202,7 @@ const rays = [
                 <router-link :to="'/projets/' + p.slug" class="more">{{ t('home.read') }}<span class="sr-only"> : {{ loc(p.title) }}</span></router-link>
               </div>
               <div class="img">
-                <img v-if="p.image" :src="p.image" :alt="loc(p.imageAlt)" :class="{ contain: p.imageFit === 'contain' }" :style="p.imagePosition ? { objectPosition: p.imagePosition } : null" loading="lazy" decoding="async" width="1200" height="900" />
-                <span v-else>{{ loc(p.imagePlaceholder) || t('projects.imageSoon') }}</span>
+                <CardMedia :project="p" :img-class="{ contain: p.cardVideo || p.imageFit === 'contain' }" />
               </div>
             </article>
           </div>
@@ -359,8 +359,8 @@ dd { margin: 4px 0 0; font-weight: 500; }
 .stop { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: center; position: relative; }
 .stop.r .img { order: -1; }
 .img { position: relative; aspect-ratio: 4 / 3; border: 1px solid rgba(230, 238, 246, 0.28); background: rgba(0, 0, 34, 0.25); display: grid; place-items: center; font: 600 11px 'IBM Plex Mono', monospace; letter-spacing: 0.08em; color: #a3b4c8; text-align: center; padding: 10px; }
-.img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.img img.contain { object-fit: contain; padding: 18px; }
+.img img, .img video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.img img.contain, .img video.contain { object-fit: contain; padding: 18px; }
 .meta { font: 600 11px 'IBM Plex Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase; color: #a3b4c8; }
 .stop h3 { font-size: clamp(22px, 2.4vw, 30px); font-weight: 600; letter-spacing: 0.03em; margin-top: 8px; }
 .tags { margin-top: 12px; font: 500 12.5px 'IBM Plex Mono', monospace; color: #a3b4c8; }

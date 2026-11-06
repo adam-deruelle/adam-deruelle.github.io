@@ -101,9 +101,10 @@ watchEffect(() => {
                 muted
                 playsinline
                 preload="none"
-                width="960"
-                height="540"
-                class="aspect-video w-full rounded-xl bg-black"
+                :width="g.tall ? 540 : 960"
+                :height="g.tall ? 960 : 540"
+                class="rounded-xl bg-black"
+                :class="g.tall ? 'mx-auto block h-auto max-h-[720px] w-auto max-w-full' : 'aspect-video w-full'"
               ></video>
               <a v-else-if="g.src && g.link" :href="g.src" target="_blank" rel="noopener" class="block rounded-xl" :aria-label="t('project.openImage', { alt: loc(g.alt) })">
                 <img
@@ -129,7 +130,7 @@ watchEffect(() => {
                 :class="[g.wide ? 'h-auto' : g.tall ? 'aspect-[3/4]' : 'aspect-[4/3]', g.fit === 'contain' ? 'bg-mist object-contain p-4' : 'object-cover', { '[image-rendering:pixelated]': g.pixel }]"
               />
               <div v-else class="placeholder aspect-[4/3] w-full rounded-xl px-4 text-center">{{ loc(g.placeholder) }}</div>
-              <figcaption v-if="(g.src || g.video) && g.alt" class="mt-2 text-sm text-muted">{{ loc(g.alt) }}<template v-if="g.link"> · {{ t('project.clickToEnlarge') }}</template></figcaption>
+              <figcaption v-if="(g.src || g.video) && g.alt" class="mt-2 text-sm text-muted" :class="{ 'text-center': g.video && g.tall }">{{ loc(g.alt) }}<template v-if="g.link"> · {{ t('project.clickToEnlarge') }}</template></figcaption>
             </figure>
           </div>
         </section>
