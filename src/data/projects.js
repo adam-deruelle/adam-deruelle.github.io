@@ -302,8 +302,8 @@ export const projects = [
     },
     context: { fr: 'BUT GEII, 2025 · APP (apprentissages par problèmes)', en: 'BUT GEII, 2025 · problem-based learning modules' },
     tags: ['C', 'MPLAB X + MCC', 'CircuitPython', 'I2C', 'Pololu Zumo'],
-    image: null,
-    imageAlt: { fr: 'Fiches de survie', en: 'Survival sheets' },
+    image: '/images/projets/fiches-survie/logos.svg', // logos C et Python (icônes Devicon, licence MIT)
+    imageAlt: { fr: 'Logos des langages C et Python', en: 'C and Python language logos' },
     github: 'https://github.com/adam-deruelle/fiches_survie',
     details: {
       intro: {
